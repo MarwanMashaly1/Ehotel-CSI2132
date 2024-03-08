@@ -99,10 +99,11 @@ CREATE TABLE hotel (
     city VARCHAR(100),
     province VARCHAR(100),
     postal_code VARCHAR(100),
-    phone_number VARCHAR(100),
-    email VARCHAR(100),
     rating DECIMAL(10, 2),
-    FOREIGN KEY (employee_sin) REFERENCES employee(sin),
+    num_rooms INT,
+    FOREIGN KEY (contact_email_ID) REFERENCES contact_email(contact_email_ID),
+    FOREIGN KEY (contact_phone_ID) REFERENCES contact_phone(contact_phone_ID),
+    FOREIGN KEY (hotel_chain_name) REFERENCES hotel_chain(chain_name),
 )
 
 CREATE TABLE hotel_chain (
@@ -110,5 +111,38 @@ CREATE TABLE hotel_chain (
     street_number VARCHAR(100),
     street_name VARCHAR(100),
     apt_number VARCHAR(100),
-     
+    city VARCHAR(100),
+    province VARCHAR(100),
+    postal_code VARCHAR(100),
+    num_hotels INT,
+    FOREIGN KEY (contact_email_ID) REFERENCES contact_email(contact_email_ID),
+    FOREIGN KEY (contact_phone_ID) REFERENCES contact_phone(contact_phone_ID),
+    FOREIGN KEY (central_office_ID) REFERENCES central_office(central_office_address_ID),     
+)
+
+CREATE TABLE contact_email (
+    contact_email_ID SERIAL PRIMARY KEY,
+    email VARCHAR(100),
+)
+
+CREATE TABLE contact_phone (
+    contact_phone_ID SERIAL PRIMARY KEY,
+    phone_number VARCHAR(100),
+)
+
+CREATE TABLE central_office_address (
+    central_office_address_ID SERIAL PRIMARY KEY,
+    street_number VARCHAR(100),
+    street_name VARCHAR(100),
+    apt_number VARCHAR(100),
+    city VARCHAR(100),
+    province VARCHAR(100),
+    postal_code VARCHAR(100),
+    FOREIGN KEY (contact_email_ID) REFERENCES contact_email(contact_email_ID),
+    FOREIGN KEY (contact_phone_ID) REFERENCES contact_phone(contact_phone_ID),
+)
+
+CREATE TABLE manages (
+    FOREIGN KEY (employee_sin) REFERENCES employee(sin),
+    FOREIGN KEY (hotel_ID) REFERENCES hotel(hotel_ID),
 )
