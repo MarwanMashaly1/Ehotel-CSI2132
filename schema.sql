@@ -96,21 +96,11 @@ CREATE TABLE central_office_address (
     apt_number VARCHAR(100),
     city VARCHAR(100),
     province VARCHAR(100),
-    postal_code VARCHAR(100),
-    contact_email_ID INT,
-    contact_phone_ID INT,
-    FOREIGN KEY (contact_email_ID) REFERENCES contact_email(contact_email_ID),
-    FOREIGN KEY (contact_phone_ID) REFERENCES contact_phone(contact_phone_ID)
+    postal_code VARCHAR(100)
 );
 
 CREATE TABLE hotel_chain (
     chain_name VARCHAR(100) PRIMARY KEY,
-    street_number VARCHAR(100),
-    street_name VARCHAR(100),
-    apt_number VARCHAR(100),
-    city VARCHAR(100),
-    province VARCHAR(100),
-    postal_code VARCHAR(100),
     num_hotels INT,
     contact_email_ID INT,
     contact_phone_ID INT,
