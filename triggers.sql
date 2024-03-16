@@ -25,6 +25,15 @@ BEGIN
     END IF;
 END;
 
+CREATE TRIGGER trg_check_room_number
+BEFORE INSERT OR UPDATE ON room
+FOR EACH ROW
+BEGIN
+    IF NEW.room_number <= 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Room number must be greater than 0';
+    END IF;
+END;
+
 -- Add a check constraint
 ALTER TABLE customer
 ADD CONSTRAINT check_email_format_customer
