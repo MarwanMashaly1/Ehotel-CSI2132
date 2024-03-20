@@ -103,7 +103,7 @@ DROP CONSTRAINT IF EXISTS check_phone_number_format;
 
 ALTER TABLE contact_phone
 ADD CONSTRAINT check_phone_number_format
-CHECK (phone_number ~ '^\d{10}$');
+CHECK (phone_number ~ '^\(\d{3}\) \d{3}-\d{4}$');
 
 -- Check constraint for email format on contact_email table
 ALTER TABLE contact_email
