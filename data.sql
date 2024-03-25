@@ -300,27 +300,27 @@ INSERT INTO contact_phone VALUES
 	-- Hilton Hotels & Resorts
 	(
 		1,
-		'(800) 445-8667'
+		'1 (800) 4445-8667'
 	),
 	-- Holiday Inn
 	(
 		2,
-		'(888) 465-4329'
+		'1 (888) 465-4329'
 	),
 	-- Sheraton Hotels and Resorts
 	(
 		3,
-		'(800) 325-3535'
+		'1 (800) 325-3535'
 	),
 	-- Marriott Hotels & Resorts
 	(
 		4,
-		'(800) 535-4028'
+		'1 (800) 535-4028'
 	),
 	-- Sandman Hotel Group
 	(
 		5,
-		'(800) 726-3626'
+		'1 (800) 726-3626'
 	),
 	
 	-- Hotels
@@ -1188,7 +1188,7 @@ INSERT INTO hotel VALUES
 
 INSERT INTO room VALUES
 	(
-		DEFAULT,
+		1,
 		100.0,
 		null,
 		1,
@@ -1198,7 +1198,57 @@ INSERT INTO room VALUES
 		1
 	),
 	(
-		DEFAULT,
+		2,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		1
+	),
+	(
+		3,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		1
+	),
+	(
+		4,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		1
+	),
+	(
+		5,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		1
+	),
+	(
+		6,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		2
+	),
+	(
+		7,
 		100.0,
 		null,
 		2,
@@ -1208,7 +1258,57 @@ INSERT INTO room VALUES
 		2
 	),
 	(
-		DEFAULT,
+		8,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		2
+	),
+	(
+		9,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		2
+	),
+	(
+		10,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		2
+	),
+	(
+		11,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		3
+	),
+	(
+		12,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		3
+	),
+	(
+		13,
 		100.0,
 		null,
 		3,
@@ -1218,7 +1318,57 @@ INSERT INTO room VALUES
 		3
 	),
 	(
-		DEFAULT,
+		14,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		3
+	),
+	(
+		15,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		3
+	),
+	(
+		16,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		4
+	),
+	(
+		17,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		4
+	),
+	(
+		18,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		4
+	),
+	(
+		19,
 		100.0,
 		null,
 		4,
@@ -1228,7 +1378,57 @@ INSERT INTO room VALUES
 		4
 	),
 	(
-		DEFAULT,
+		20,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		4
+	),
+	(
+		21,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		5
+	),
+	(
+		22,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		5
+	),
+	(
+		23,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		5
+	),
+	(
+		24,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		5
+	),
+	(
+		25,
 		100.0,
 		null,
 		5,
@@ -1238,7 +1438,7 @@ INSERT INTO room VALUES
 		5
 	),
 	(
-		DEFAULT,
+		26,
 		100.0,
 		null,
 		1,
@@ -1248,7 +1448,57 @@ INSERT INTO room VALUES
 		6
 	),
 	(
-		DEFAULT,
+		27,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		6
+	),
+	(
+		28,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		6
+	),
+	(
+		29,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		6
+	),
+	(
+		30,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		6
+	),
+	(
+		31,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		7
+	),
+	(
+		32,
 		100.0,
 		null,
 		2,
@@ -1258,7 +1508,57 @@ INSERT INTO room VALUES
 		7
 	),
 	(
-		DEFAULT,
+		33,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		7
+	),
+	(
+		34,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		7
+	),
+	(
+		35,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		7
+	),
+	(
+		36,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		8
+	),
+	(
+		37,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		8
+	),
+	(
+		38,
 		100.0,
 		null,
 		3,
@@ -1268,7 +1568,57 @@ INSERT INTO room VALUES
 		8
 	),
 	(
-		DEFAULT,
+		39,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		8
+	),
+	(
+		40,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		8
+	),
+	(
+		41,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		9
+	),
+	(
+		42,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		9
+	),
+	(
+		43,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		9
+	),
+	(
+		44,
 		100.0,
 		null,
 		4,
@@ -1278,7 +1628,57 @@ INSERT INTO room VALUES
 		9
 	),
 	(
-		DEFAULT,
+		45,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		9
+	),
+	(
+		46,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		10
+	),
+	(
+		47,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		10
+	),
+	(
+		48,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		10
+	),
+	(
+		49,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		10
+	),
+	(
+		50,
 		100.0,
 		null,
 		5,
@@ -1288,7 +1688,7 @@ INSERT INTO room VALUES
 		10
 	),
 	(
-		DEFAULT,
+		51,
 		100.0,
 		null,
 		1,
@@ -1298,7 +1698,57 @@ INSERT INTO room VALUES
 		11
 	),
 	(
-		DEFAULT,
+		52,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		11
+	),
+	(
+		53,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		11
+	),
+	(
+		54,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		11
+	),
+	(
+		55,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		11
+	),
+	(
+		56,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		12
+	),
+	(
+		57,
 		100.0,
 		null,
 		2,
@@ -1308,7 +1758,57 @@ INSERT INTO room VALUES
 		12
 	),
 	(
-		DEFAULT,
+		58,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		12
+	),
+	(
+		59,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		12
+	),
+	(
+		60,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		12
+	),
+	(
+		61,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		13
+	),
+	(
+		62,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		13
+	),
+	(
+		63,
 		100.0,
 		null,
 		3,
@@ -1318,7 +1818,57 @@ INSERT INTO room VALUES
 		13
 	),
 	(
-		DEFAULT,
+		64,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		13
+	),
+	(
+		65,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		13
+	),
+	(
+		66,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		14
+	),
+	(
+		67,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		14
+	),
+	(
+		68,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		14
+	),
+	(
+		69,
 		100.0,
 		null,
 		4,
@@ -1328,7 +1878,57 @@ INSERT INTO room VALUES
 		14
 	),
 	(
-		DEFAULT,
+		70,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		14
+	),
+	(
+		71,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		15
+	),
+	(
+		72,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		15
+	),
+	(
+		73,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		15
+	),
+	(
+		74,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		15
+	),
+	(
+		75,
 		100.0,
 		null,
 		5,
@@ -1338,7 +1938,7 @@ INSERT INTO room VALUES
 		15
 	),
 	(
-		DEFAULT,
+		76,
 		100.0,
 		null,
 		1,
@@ -1348,7 +1948,57 @@ INSERT INTO room VALUES
 		16
 	),
 	(
-		DEFAULT,
+		77,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		16
+	),
+	(
+		78,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		16
+	),
+	(
+		79,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		16
+	),
+	(
+		80,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		16
+	),
+	(
+		81,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		17
+	),
+	(
+		82,
 		100.0,
 		null,
 		2,
@@ -1358,7 +2008,57 @@ INSERT INTO room VALUES
 		17
 	),
 	(
-		DEFAULT,
+		83,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		17
+	),
+	(
+		84,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		17
+	),
+	(
+		85,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		17
+	),
+	(
+		86,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		18
+	),
+	(
+		87,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		18
+	),
+	(
+		88,
 		100.0,
 		null,
 		3,
@@ -1368,7 +2068,57 @@ INSERT INTO room VALUES
 		18
 	),
 	(
-		DEFAULT,
+		89,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		18
+	),
+	(
+		90,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		18
+	),
+	(
+		91,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		19
+	),
+	(
+		92,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		19
+	),
+	(
+		93,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		19
+	),
+	(
+		94,
 		100.0,
 		null,
 		4,
@@ -1378,7 +2128,57 @@ INSERT INTO room VALUES
 		19
 	),
 	(
-		DEFAULT,
+		95,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		19
+	),
+	(
+		96,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		20
+	),
+	(
+		97,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		20
+	),
+	(
+		98,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		20
+	),
+	(
+		99,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		20
+	),
+	(
+		100,
 		100.0,
 		null,
 		5,
@@ -1388,7 +2188,7 @@ INSERT INTO room VALUES
 		20
 	),
 	(
-		DEFAULT,
+		101,
 		100.0,
 		null,
 		1,
@@ -1398,7 +2198,57 @@ INSERT INTO room VALUES
 		21
 	),
 	(
-		DEFAULT,
+		102,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		21
+	),
+	(
+		103,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		21
+	),
+	(
+		104,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		21
+	),
+	(
+		105,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		21
+	),
+	(
+		106,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		22
+	),
+	(
+		107,
 		100.0,
 		null,
 		2,
@@ -1408,7 +2258,57 @@ INSERT INTO room VALUES
 		22
 	),
 	(
-		DEFAULT,
+		108,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		22
+	),
+	(
+		109,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		22
+	),
+	(
+		110,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		22
+	),
+	(
+		111,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		23
+	),
+	(
+		112,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		23
+	),
+	(
+		113,
 		100.0,
 		null,
 		3,
@@ -1418,7 +2318,57 @@ INSERT INTO room VALUES
 		23
 	),
 	(
-		DEFAULT,
+		114,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		23
+	),
+	(
+		115,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		23
+	),
+	(
+		116,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		24
+	),
+	(
+		117,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		24
+	),
+	(
+		118,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		24
+	),
+	(
+		119,
 		100.0,
 		null,
 		4,
@@ -1428,7 +2378,57 @@ INSERT INTO room VALUES
 		24
 	),
 	(
-		DEFAULT,
+		120,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		24
+	),
+	(
+		121,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		25
+	),
+	(
+		122,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		25
+	),
+	(
+		123,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		25
+	),
+	(
+		124,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		25
+	),
+	(
+		125,
 		100.0,
 		null,
 		5,
@@ -1438,7 +2438,7 @@ INSERT INTO room VALUES
 		25
 	),
 	(
-		DEFAULT,
+		126,
 		100.0,
 		null,
 		1,
@@ -1448,7 +2448,57 @@ INSERT INTO room VALUES
 		26
 	),
 	(
-		DEFAULT,
+		127,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		26
+	),
+	(
+		128,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		26
+	),
+	(
+		129,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		26
+	),
+	(
+		130,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		26
+	),
+	(
+		131,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		27
+	),
+	(
+		132,
 		100.0,
 		null,
 		2,
@@ -1458,7 +2508,57 @@ INSERT INTO room VALUES
 		27
 	),
 	(
-		DEFAULT,
+		133,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		27
+	),
+	(
+		134,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		27
+	),
+	(
+		135,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		27
+	),
+	(
+		136,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		28
+	),
+	(
+		137,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		28
+	),
+	(
+		138,
 		100.0,
 		null,
 		3,
@@ -1468,7 +2568,57 @@ INSERT INTO room VALUES
 		28
 	),
 	(
-		DEFAULT,
+		139,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		28
+	),
+	(
+		140,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		28
+	),
+	(
+		141,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		29
+	),
+	(
+		142,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		29
+	),
+	(
+		143,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		29
+	),
+	(
+		144,
 		100.0,
 		null,
 		4,
@@ -1478,7 +2628,57 @@ INSERT INTO room VALUES
 		29
 	),
 	(
-		DEFAULT,
+		145,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		29
+	),
+	(
+		146,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		30
+	),
+	(
+		147,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		30
+	),
+	(
+		148,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		30
+	),
+	(
+		149,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		30
+	),
+	(
+		150,
 		100.0,
 		null,
 		5,
@@ -1488,7 +2688,7 @@ INSERT INTO room VALUES
 		30
 	),
 	(
-		DEFAULT,
+		151,
 		100.0,
 		null,
 		1,
@@ -1498,7 +2698,57 @@ INSERT INTO room VALUES
 		31
 	),
 	(
-		DEFAULT,
+		152,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		31
+	),
+	(
+		153,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		31
+	),
+	(
+		154,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		31
+	),
+	(
+		155,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		31
+	),
+	(
+		156,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		32
+	),
+	(
+		157,
 		100.0,
 		null,
 		2,
@@ -1508,7 +2758,57 @@ INSERT INTO room VALUES
 		32
 	),
 	(
-		DEFAULT,
+		158,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		32
+	),
+	(
+		159,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		32
+	),
+	(
+		160,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		32
+	),
+	(
+		161,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		33
+	),
+	(
+		162,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		33
+	),
+	(
+		163,
 		100.0,
 		null,
 		3,
@@ -1518,7 +2818,57 @@ INSERT INTO room VALUES
 		33
 	),
 	(
-		DEFAULT,
+		164,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		33
+	),
+	(
+		165,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		33
+	),
+	(
+		166,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		34
+	),
+	(
+		167,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		34
+	),
+	(
+		168,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		34
+	),
+	(
+		169,
 		100.0,
 		null,
 		4,
@@ -1528,7 +2878,57 @@ INSERT INTO room VALUES
 		34
 	),
 	(
-		DEFAULT,
+		170,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		34
+	),
+	(
+		171,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		35
+	),
+	(
+		172,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		35
+	),
+	(
+		173,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		35
+	),
+	(
+		174,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		35
+	),
+	(
+		175,
 		100.0,
 		null,
 		5,
@@ -1538,7 +2938,7 @@ INSERT INTO room VALUES
 		35
 	),
 	(
-		DEFAULT,
+		176,
 		100.0,
 		null,
 		1,
@@ -1548,7 +2948,57 @@ INSERT INTO room VALUES
 		36
 	),
 	(
-		DEFAULT,
+		177,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		36
+	),
+	(
+		178,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		36
+	),
+	(
+		179,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		36
+	),
+	(
+		180,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		36
+	),
+	(
+		181,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		37
+	),
+	(
+		182,
 		100.0,
 		null,
 		2,
@@ -1558,7 +3008,57 @@ INSERT INTO room VALUES
 		37
 	),
 	(
-		DEFAULT,
+		183,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		37
+	),
+	(
+		184,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		37
+	),
+	(
+		185,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		37
+	),
+	(
+		186,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		38
+	),
+	(
+		187,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		38
+	),
+	(
+		188,
 		100.0,
 		null,
 		3,
@@ -1568,7 +3068,57 @@ INSERT INTO room VALUES
 		38
 	),
 	(
-		DEFAULT,
+		189,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		38
+	),
+	(
+		190,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		38
+	),
+	(
+		191,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		39
+	),
+	(
+		192,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		39
+	),
+	(
+		193,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		39
+	),
+	(
+		194,
 		100.0,
 		null,
 		4,
@@ -1578,7 +3128,57 @@ INSERT INTO room VALUES
 		39
 	),
 	(
-		DEFAULT,
+		195,
+		100.0,
+		null,
+		5,
+		'Street View',
+		false,
+		null,
+		39
+	),
+	(
+		196,
+		100.0,
+		null,
+		1,
+		'Street View',
+		false,
+		null,
+		40
+	),
+	(
+		197,
+		100.0,
+		null,
+		2,
+		'Street View',
+		false,
+		null,
+		40
+	),
+	(
+		198,
+		100.0,
+		null,
+		3,
+		'Street View',
+		false,
+		null,
+		40
+	),
+	(
+		199,
+		100.0,
+		null,
+		4,
+		'Street View',
+		false,
+		null,
+		40
+	),
+	(
+		200,
 		100.0,
 		null,
 		5,
