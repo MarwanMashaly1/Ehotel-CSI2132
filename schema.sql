@@ -54,8 +54,6 @@ CREATE TABLE damage (
     description VARCHAR(100)
 );
 
-
-
 CREATE TABLE book (
     booking_id INT,
     customer_email VARCHAR(100),
