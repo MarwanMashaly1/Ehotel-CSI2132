@@ -10,7 +10,7 @@ import psycopg2
 
 connection = psycopg2.connect(database="ehotel",
                                 user="postgres",
-                                password="marwan2000",
+                                password="",
                                 host="localhost",
                                 port="5432")
 cursor = connection.cursor()
