@@ -13,7 +13,7 @@ function Rooms() {
   const fetchRooms = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://your-backend-api/room`, {
+      const response = await fetch(`http://localhost:7777/room`, {
         method: "GET",
         headers: {
           // Your required headers

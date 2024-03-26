@@ -15,15 +15,13 @@ connection = psycopg2.connect(database="ehotel",
                                 port="5432")
 cursor = connection.cursor()
 
-
-
 app = Flask(__name__)
 
 def get_db():
     if 'db' not in g:
         g.db = psycopg2.connect(database="ehotel",
                                 user="postgres",
-                                password="marwan2000",
+                                password="",
                                 host="localhost",
                                 port="5432")
         g.cursor = g.db.cursor()
