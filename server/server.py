@@ -1,31 +1,17 @@
 from flask import Flask, request, g
 import psycopg2
 
-# # Database info (replace with your database details)
-# DATABASE=""
-# USER=""
-# PASSWORD=""
-# HOST=""
-# PORT=""
+# Database info (replace with your database details)
+DATABASE="eHotel"
+USER="postgres"
+PASSWORD="Skate2fast"
+HOST="localhost"
+PORT="5432"
 
-connection = psycopg2.connect(database="ehotel",
-                                user="postgres",
-                                password="",
-                                host="localhost",
-                                port="5432")
-cursor = connection.cursor()
+def connect():
+    return psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
 
 app = Flask(__name__)
-
-def get_db():
-    if 'db' not in g:
-        g.db = psycopg2.connect(database="ehotel",
-                                user="postgres",
-                                password="",
-                                host="localhost",
-                                port="5432")
-        g.cursor = g.db.cursor()
-    return g.cursor
 
 @app.teardown_appcontext
 def close_db(error):
@@ -37,7 +23,8 @@ def close_db(error):
 @app.route("/room", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def room():
 
-    cursor = get_db()
+    connection = connect()
+    cursor = connection.cursor()
 
     hotel_ID = request.args.get('hotelID', None)
     room_number = request.args.get('roomNumber', None)
@@ -56,12 +43,12 @@ def room():
     max_price = request.args.get('price', None)
 
     if request.method == 'GET':
-        if hotel_ID and room_number:
+        if room_number:
             query = """
             SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price
             FROM room AS r NATURAL JOIN hotel as h
             """
-            query += f"WHERE hotel_ID = {hotel_ID} AND room_number = {room_number}"
+            query += f"WHERE room_number = {room_number}"
         # query from user search
         else:
             query = """
@@ -73,43 +60,43 @@ def room():
                 NATURAL JOIN hotel 
                 NATURAL LEFT JOIN booked_room 
                 NATURAL JOIN booking """
-            if start_date and end_date:
-                query += f"WHERE (booking.end_date < {start_date} OR booking.start_date > {end_date})) "
-            else:
-                query += ")"
+            query += f"WHERE (booking.end_date < '{start_date}' OR booking.start_date > '{end_date}')) "
 
             if capacity:
                 query += f"AND r.capacity = {wanted_capacity}"
             if province:
-                query += f"AND h.province = {province} "
+                query += f"AND h.province = '{province}' "
                 if city: 
-                    query += f"AND h.city = {city} "
+                    query += f"AND h.city = '{city}' "
             if hotel_chain:
-                query += f"AND h.hotel_chain_name = {hotel_chain} "
+                query += f"AND h.hotel_chain_name = '{hotel_chain}' "
             if num_rooms: 
                 query += f"AND h.num_rooms >= {num_rooms} "
             # if category:
             #     query += f"AND h.category = {category} "
             if max_price:
                 query += f"AND r.price <= {max_price} "
+        cursor.execute(query)
+        room = cursor.fetchall()
+        return room
     elif request.method == 'POST':
-        query = f"INSERT INTO room VALUES (DEFAULT,{price},null,{capacity},{view},false,null,{hotel_ID})"
+        query = f"INSERT INTO room VALUES ({room_number},{price}.0,null,{capacity},'{view}',{extendable},null,{hotel_ID})"
     elif request.method == 'PUT':
-        query = f"UPDATE room SET price = {price}, capacity = {capacity}, view = {view}, extendable = {extendable} WHERE hotel_ID = {hotel_ID} AND room_number = {room_number}"
+        query = f"UPDATE room SET price = {price}, capacity = {capacity}, view = '{view}', extendable = {extendable} WHERE room_number = {room_number}"
     elif request.method == 'DELETE':
-        query = f"DELETE FROM room WHERE hotel_ID = {hotel_ID} AND room_number = {room_number}"
-
+        query = f"DELETE FROM room WHERE room_number = {room_number}"
     cursor.execute(query)
-    room = cursor.fetchall()
     connection.commit()
-    
-    return room
+    cursor.close()
+    connection.close()
+    return 'OK'
 
 # route with parameters should look like "/customer?email=john@doe.com"
 @app.route("/customer", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def customer():
 
-    cursor = get_db()
+    connection = connect()
+    cursor = connection.cursor()
 
     email = request.args.get('email', None)
     password = request.args.get('password', None)
@@ -135,7 +122,8 @@ def customer():
     cursor.execute(query)
     customer = cursor.fetchall()
     connection.commit()
-    
+    cursor.close()
+    connection.close()
     
     return customer
 
@@ -143,8 +131,8 @@ def customer():
 @app.route("/employee", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def employee():
 
-    # Fill these details for your database
-    cursor = get_db()
+    connection = connect()
+    cursor = connection.cursor()
     
     sin = request.args.get('sin', None)
     password = request.args.get('password', None)
@@ -171,16 +159,17 @@ def employee():
     cursor.execute(query)
     employee = cursor.fetchall()
     connection.commit()
-    
+    cursor.close()
+    connection.close()
     
     return employee
 
 # route with parameters should look like "/hotel?hotel_ID=1"
 @app.route("/hotel", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def hotel():
-    cursor = get_db()
-    # Fill these details for your database
-    
+
+    connection = connect()
+    cursor = connection.cursor()
 
     hotel_ID = request.args.get('hotelID', None)
     name = request.args.get('name', None)
@@ -206,7 +195,8 @@ def hotel():
     cursor.execute(query)
     hotel = cursor.fetchall()
     connection.commit()
-    
+    cursor.close()
+    connection.close()
     
     return hotel
 
