@@ -1,25 +1,43 @@
-from flask import Flask, request
+from flask import Flask, request, g
 import psycopg2
 
-# Database info (replace with your database details)
-DATABASE=""
-USER=""
-PASSWORD=""
-HOST=""
-PORT=""
+# # Database info (replace with your database details)
+# DATABASE=""
+# USER=""
+# PASSWORD=""
+# HOST=""
+# PORT=""
+
+connection = psycopg2.connect(database="ehotel",
+                                user="postgres",
+                                password="",
+                                host="localhost",
+                                port="5432")
+cursor = connection.cursor()
 
 app = Flask(__name__)
+
+def get_db():
+    if 'db' not in g:
+        g.db = psycopg2.connect(database="ehotel",
+                                user="postgres",
+                                password="",
+                                host="localhost",
+                                port="5432")
+        g.cursor = g.db.cursor()
+    return g.cursor
+
+@app.teardown_appcontext
+def close_db(error):
+    if 'db' in g:
+        g.cursor.close()
+        g.db.close()
 
 # route with parameters should look like "/room?startDate=2023-05-08&endDate=2023-05-16"
 @app.route("/room", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def room():
 
-    connection = psycopg2.connect(database=DATABASE,
-                                user=USER,
-                                password=PASSWORD,
-                                host=HOST,
-                                port=PORT)
-    cursor = connection.cursor()
+    cursor = get_db()
 
     hotel_ID = request.args.get('hotelID', None)
     room_number = request.args.get('roomNumber', None)
@@ -34,20 +52,20 @@ def room():
     city = request.args.get('city', None)
     hotel_chain = request.args.get('hotelChain', None)
     num_rooms = request.args.get('numRooms', None)
-    category = request.args.get('category', None)
+    # category = request.args.get('category', None)
     max_price = request.args.get('price', None)
 
     if request.method == 'GET':
         if hotel_ID and room_number:
             query = """
-            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, h.category, r.capacity, r.view, r.price
+            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price
             FROM room AS r NATURAL JOIN hotel as h
             """
             query += f"WHERE hotel_ID = {hotel_ID} AND room_number = {room_number}"
         # query from user search
         else:
             query = """
-            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, h.category, r.capacity, r.view, r.price 
+            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price 
             FROM room AS r NATURAL JOIN hotel AS h 
             WHERE NOT EXISTS (
                 SELECT * 
@@ -55,7 +73,11 @@ def room():
                 NATURAL JOIN hotel 
                 NATURAL LEFT JOIN booked_room 
                 NATURAL JOIN booking """
-            query += f"WHERE (booking.end_date < {start_date} OR booking.start_date > {end_date})) "
+            if start_date and end_date:
+                query += f"WHERE (booking.end_date < {start_date} OR booking.start_date > {end_date})) "
+            else:
+                query += ")"
+
             if capacity:
                 query += f"AND r.capacity = {wanted_capacity}"
             if province:
@@ -64,10 +86,10 @@ def room():
                     query += f"AND h.city = {city} "
             if hotel_chain:
                 query += f"AND h.hotel_chain_name = {hotel_chain} "
-            if num_rooms:
+            if num_rooms: 
                 query += f"AND h.num_rooms >= {num_rooms} "
-            if category:
-                query += f"AND h.category = {category} "
+            # if category:
+            #     query += f"AND h.category = {category} "
             if max_price:
                 query += f"AND r.price <= {max_price} "
     elif request.method == 'POST':
@@ -80,20 +102,14 @@ def room():
     cursor.execute(query)
     room = cursor.fetchall()
     connection.commit()
-    cursor.close()
-    connection.close()
+    
     return room
 
 # route with parameters should look like "/customer?email=john@doe.com"
 @app.route("/customer", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def customer():
 
-    connection = psycopg2.connect(database=DATABASE,
-                                user=USER,
-                                password=PASSWORD,
-                                host=HOST,
-                                port=PORT)
-    cursor = connection.cursor()
+    cursor = get_db()
 
     email = request.args.get('email', None)
     password = request.args.get('password', None)
@@ -119,8 +135,8 @@ def customer():
     cursor.execute(query)
     customer = cursor.fetchall()
     connection.commit()
-    cursor.close()
-    connection.close()
+    
+    
     return customer
 
 # route with parameters should look like "/employee?sin=101010101"
@@ -128,13 +144,8 @@ def customer():
 def employee():
 
     # Fill these details for your database
-    connection = psycopg2.connect(database=DATABASE,
-                                user=USER,
-                                password=PASSWORD,
-                                host=HOST,
-                                port=PORT)
-    cursor = connection.cursor()
-
+    cursor = get_db()
+    
     sin = request.args.get('sin', None)
     password = request.args.get('password', None)
     first_name = request.args.get('firstName', None)
@@ -160,21 +171,16 @@ def employee():
     cursor.execute(query)
     employee = cursor.fetchall()
     connection.commit()
-    cursor.close()
-    connection.close()
+    
+    
     return employee
 
 # route with parameters should look like "/hotel?hotel_ID=1"
 @app.route("/hotel", methods=['GET', 'POST', 'PUT', 'DELETE'])
-def employee():
-
+def hotel():
+    cursor = get_db()
     # Fill these details for your database
-    connection = psycopg2.connect(database=DATABASE,
-                                user=USER,
-                                password=PASSWORD,
-                                host=HOST,
-                                port=PORT)
-    cursor = connection.cursor()
+    
 
     hotel_ID = request.args.get('hotelID', None)
     name = request.args.get('name', None)
@@ -200,9 +206,10 @@ def employee():
     cursor.execute(query)
     hotel = cursor.fetchall()
     connection.commit()
-    cursor.close()
-    connection.close()
+    
+    
     return hotel
+
 
 if __name__ == "__main__":
     # this port must match the port in 'proxy' in package.json
