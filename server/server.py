@@ -4,7 +4,7 @@ import psycopg2
 # Database info (replace with your database details)
 DATABASE="eHotel"
 USER="postgres"
-PASSWORD="Skate2fast"
+PASSWORD=""
 HOST="localhost"
 PORT="5432"
 
@@ -78,6 +78,8 @@ def room():
                 query += f"AND r.price <= {max_price} "
         cursor.execute(query)
         room = cursor.fetchall()
+        cursor.close()
+        connection.close()
         return room
     elif request.method == 'POST':
         query = f"INSERT INTO room VALUES ({room_number},{price}.0,null,{capacity},'{view}',{extendable},null,{hotel_ID})"
@@ -111,23 +113,25 @@ def customer():
     register_date = request.args.get('registerDate', None)
 
     if request.method == 'GET':
-        query = f"SELECT * FROM customer WHERE email = {email}"
+        query = f"SELECT * FROM customer WHERE email = '{email}'"
+        cursor.execute(query)
+        customer = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return customer
     elif request.method == 'POST':
-        query = f"INSERT INTO customer VALUES ({email},{password},{first_name},{last_name},{street_number},{street_name},{apt_number},{city},{province},{postal_code},{register_date})"
+        query = f"INSERT INTO customer VALUES ('{email}','{password}','{first_name}','{last_name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}','{register_date}')"
     elif request.method == 'PUT':
-        query = f"UPDATE customer SET email = {email}, password = {password}, first_name = {first_name}, last_name = {last_name}, street_number = {street_number}, street_name = {street_name}, apt_number = {apt_number}, city = {city}, province = {province}, postal_code = {postal_code}, register_date = {register_date} WHERE email = {email}"
+        query = f"UPDATE customer SET email = '{email}', password = '{password}', first_name = '{first_name}', last_name = '{last_name}', street_number = '{street_number}', street_name = '{street_name}', apt_number = '{apt_number}', city = '{city}', province = '{province}', postal_code = '{postal_code}', register_date = '{register_date}' WHERE email = '{email}'"
     elif request.method == 'DELETE':
-        query = f"DELETE FROM customer WHERE email = {email}"
-
+        query = f"DELETE FROM customer WHERE email = '{email}'"
     cursor.execute(query)
-    customer = cursor.fetchall()
     connection.commit()
     cursor.close()
     connection.close()
-    
-    return customer
+    return 'OK'
 
-# route with parameters should look like "/employee?sin=101010101"
+# route with parameters should look like "/employee?sin=101-010-101"
 @app.route("/employee", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def employee():
 
@@ -146,23 +150,35 @@ def employee():
     postal_code = request.args.get('postalCode', None)
     rating  = request.args.get('rating', None)
     emp_role = request.args.get('empRole', None)
+    hotel_ID = request.args.get('hotelID', None)
 
     if request.method == 'GET':
-        query = f"SELECT * FROM employee WHERE sin = {sin}"
+        query = f"SELECT * FROM employee WHERE sin = '{sin}'"
+        cursor.execute(query)
+        employee = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return employee
     elif request.method == 'POST':
-        query = f"INSERT INTO employee VALUES ({sin},{password},{first_name},{last_name},{street_number},{street_name},{apt_number},{city},{province},{postal_code},{rating},{emp_role})"
+        query = f"INSERT INTO employee VALUES ('{sin}','{password}','{first_name}','{last_name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}',{rating},'{emp_role}','{hotel_ID}')"
+        if emp_role == "manager":
+            query += f";DELETE FROM manages WHERE (employee_sin = '{sin}' OR hotel_ID = {hotel_ID})"
+            query += f";INSERT INTO manages VALUES ('{sin}',{hotel_ID})"
     elif request.method == 'PUT':
-        query = f"UPDATE employee SET sin = {sin}, password = {password}, first_name = {first_name}, last_name = {last_name}, street_number = {street_number}, street_name = {street_name}, apt_number = {apt_number}, city = {city}, province = {province}, postal_code = {postal_code}, rating = {rating}, emp_role = {emp_role} WHERE sin = {sin}"
+        query = f"UPDATE employee SET sin = '{sin}', password = '{password}', first_name = '{first_name}', last_name = '{last_name}', street_number = '{street_number}', street_name = '{street_name}', apt_number = '{apt_number}', city = '{city}', province = '{province}', postal_code = '{postal_code}', rating = {rating}, emp_role = '{emp_role}', hotel_ID = {hotel_ID} WHERE sin = '{sin}'"
+        if emp_role == "manager":
+            query += f";DELETE FROM manages WHERE (employee_sin = '{sin}' OR hotel_ID = {hotel_ID})"
+            query += f";INSERT INTO manages VALUES ('{sin}',{hotel_ID})"
     elif request.method == 'DELETE':
-        query = f"DELETE FROM employee WHERE email = {sin}"
+        query = f"DELETE FROM manages WHERE employee_sin = '{sin}'"
+        query += f";DELETE FROM employee WHERE sin = '{sin}'"
+        query += f";UPDATE creates SET employee_sin = null WHERE employee_sin = '{sin}'"
 
     cursor.execute(query)
-    employee = cursor.fetchall()
     connection.commit()
     cursor.close()
     connection.close()
-    
-    return employee
+    return 'OK'
 
 # route with parameters should look like "/hotel?hotel_ID=1"
 @app.route("/hotel", methods=['GET', 'POST', 'PUT', 'DELETE'])
@@ -185,20 +201,23 @@ def hotel():
 
     if request.method == 'GET':
         query = f"SELECT * FROM hotel WHERE hotel_ID = {hotel_ID}"
+        cursor.execute(query)
+        hotel = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return hotel
     elif request.method == 'POST':
-        query = f"INSERT INTO employee VALUES ({hotel_ID},{name},{street_number},{street_name},{apt_number},{city},{province},{postal_code},{rating},{num_rooms},{hotel_chain_name})"
+        query = f"INSERT INTO employee VALUES ({hotel_ID},'{name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}',{rating},{num_rooms},'{hotel_chain_name}')"
     elif request.method == 'PUT':
-        query = f"UPDATE employee SET hotel_ID = {hotel_ID}, name = {name}, street_number = {street_number}, street_name = {street_name}, apt_number = {apt_number}, city = {city}, province = {province}, postal_code = {postal_code}, rating = {rating}, num_rooms = {num_rooms}, hotel_chain_name = {hotel_chain_name} WHERE hotel_ID = {hotel_ID}"
+        query = f"UPDATE employee SET hotel_ID = {hotel_ID}, name = '{name}', street_number = '{street_number}', street_name = '{street_name}', apt_number = '{apt_number}', city = '{city}', province = '{province}', postal_code = '{postal_code}', rating = {rating}, num_rooms = {num_rooms}, hotel_chain_name = '{hotel_chain_name}' WHERE hotel_ID = {hotel_ID}"
     elif request.method == 'DELETE':
         query = f"DELETE FROM employee WHERE hotel_ID = {hotel_ID}"
 
     cursor.execute(query)
-    hotel = cursor.fetchall()
     connection.commit()
     cursor.close()
     connection.close()
-    
-    return hotel
+    return 'OK'
 
 
 if __name__ == "__main__":

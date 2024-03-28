@@ -24,7 +24,9 @@ CREATE TABLE employee (
     province VARCHAR(100),
     postal_code VARCHAR(100),
     rating DECIMAL(10, 2),
-    emp_role VARCHAR(100)
+    emp_role VARCHAR(100),
+    hotel_ID INT,
+    FOREIGN KEY (hotel_ID) REFERENCES hotel(hotel_ID)
 );
 
 CREATE TABLE booking (
