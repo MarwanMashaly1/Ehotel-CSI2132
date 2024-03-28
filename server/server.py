@@ -84,7 +84,16 @@ def room():
     elif request.method == 'POST':
         query = f"INSERT INTO room VALUES ({room_number},{price}.0,null,{capacity},'{view}',{extendable},null,{hotel_ID})"
     elif request.method == 'PUT':
-        query = f"UPDATE room SET price = {price}, capacity = {capacity}, view = '{view}', extendable = {extendable} WHERE room_number = {room_number}"
+        query = "UPDATE room SET "
+        if price:
+            query += f"price = {price}, "
+        if capacity:
+            query += f"capacity = {capacity}, "
+        if view:
+            query += f"view = '{view}', "
+        if extendable:
+            query += f"extendable = {extendable}, "
+        query = query[:-2] + f" WHERE room_number = {room_number}"
     elif request.method == 'DELETE':
         query = f"DELETE FROM room WHERE room_number = {room_number}"
     cursor.execute(query)
@@ -122,7 +131,28 @@ def customer():
     elif request.method == 'POST':
         query = f"INSERT INTO customer VALUES ('{email}','{password}','{first_name}','{last_name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}','{register_date}')"
     elif request.method == 'PUT':
-        query = f"UPDATE customer SET email = '{email}', password = '{password}', first_name = '{first_name}', last_name = '{last_name}', street_number = '{street_number}', street_name = '{street_name}', apt_number = '{apt_number}', city = '{city}', province = '{province}', postal_code = '{postal_code}', register_date = '{register_date}' WHERE email = '{email}'"
+        query = "UPDATE customer SET "
+        if password:
+            query += f"password = '{password}', "
+        if first_name:
+            query += f"first_name = '{first_name}', "
+        if last_name:
+            query += f"last_name = '{last_name}', "
+        if street_number:
+            query += f"street_number = '{street_number}', "
+        if street_name:
+            query += f"street_name = '{street_name}', "
+        if apt_number:
+            query += f"apt_number = '{apt_number}', "
+        if city:
+            query += f"city = '{city}', "
+        if province:
+            query += f"province = '{province}', "
+        if postal_code:
+            query += f"postal_code = '{postal_code}', "
+        if register_date:
+            query += f"register_date = '{register_date}', "
+        query = query[:-2] + f" WHERE email = '{email}'"
     elif request.method == 'DELETE':
         query = f"DELETE FROM customer WHERE email = '{email}'"
     cursor.execute(query)
@@ -165,7 +195,32 @@ def employee():
             query += f";DELETE FROM manages WHERE (employee_sin = '{sin}' OR hotel_ID = {hotel_ID})"
             query += f";INSERT INTO manages VALUES ('{sin}',{hotel_ID})"
     elif request.method == 'PUT':
-        query = f"UPDATE employee SET sin = '{sin}', password = '{password}', first_name = '{first_name}', last_name = '{last_name}', street_number = '{street_number}', street_name = '{street_name}', apt_number = '{apt_number}', city = '{city}', province = '{province}', postal_code = '{postal_code}', rating = {rating}, emp_role = '{emp_role}', hotel_ID = {hotel_ID} WHERE sin = '{sin}'"
+        query = "UPDATE employee SET "
+        if password:
+            query += f"password = '{password}', "
+        if first_name:
+            query += f"first_name = '{first_name}', "
+        if last_name:
+            query += f"last_name = '{last_name}', "
+        if street_number:
+            query += f"street_number = '{street_number}', "
+        if street_name:
+            query += f"street_name = '{street_name}', "
+        if apt_number:
+            query += f"apt_number = '{apt_number}', "
+        if city:
+            query += f"city = '{city}', "
+        if province:
+            query += f"province = '{province}', "
+        if postal_code:
+            query += f"postal_code = '{postal_code}', "
+        if rating:
+            query += f"rating = {rating}, "
+        if emp_role:
+            query += f"emp_role = '{emp_role}', "
+        if hotel_ID:
+            query += f"hotel_ID = {hotel_ID}, "
+        query = query[:-2] + f" WHERE sin = '{sin}'"
         if emp_role == "manager":
             query += f";DELETE FROM manages WHERE (employee_sin = '{sin}' OR hotel_ID = {hotel_ID})"
             query += f";INSERT INTO manages VALUES ('{sin}',{hotel_ID})"
@@ -173,14 +228,13 @@ def employee():
         query = f"DELETE FROM manages WHERE employee_sin = '{sin}'"
         query += f";DELETE FROM employee WHERE sin = '{sin}'"
         query += f";UPDATE creates SET employee_sin = null WHERE employee_sin = '{sin}'"
-
     cursor.execute(query)
     connection.commit()
     cursor.close()
     connection.close()
     return 'OK'
 
-# route with parameters should look like "/hotel?hotel_ID=1"
+# route with parameters should look like "/hotel?hotelID=1"
 @app.route("/hotel", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def hotel():
 
@@ -207,11 +261,32 @@ def hotel():
         connection.close()
         return hotel
     elif request.method == 'POST':
-        query = f"INSERT INTO employee VALUES ({hotel_ID},'{name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}',{rating},{num_rooms},'{hotel_chain_name}')"
+        query = f"INSERT INTO hotel VALUES ({hotel_ID},'{name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}',{rating},{num_rooms},'{hotel_chain_name}')"
     elif request.method == 'PUT':
-        query = f"UPDATE employee SET hotel_ID = {hotel_ID}, name = '{name}', street_number = '{street_number}', street_name = '{street_name}', apt_number = '{apt_number}', city = '{city}', province = '{province}', postal_code = '{postal_code}', rating = {rating}, num_rooms = {num_rooms}, hotel_chain_name = '{hotel_chain_name}' WHERE hotel_ID = {hotel_ID}"
+        query = "UPDATE hotel SET "
+        if name:
+            query += f"name = '{name}', "
+        if street_number:
+            query += f"street_number = '{street_number}', "
+        if street_name:
+            query += f"street_name = '{street_name}', "
+        if apt_number:
+            query += f"apt_number = '{apt_number}', "
+        if city:
+            query += f"city = '{city}', "
+        if province:
+            query += f"province = '{province}', "
+        if postal_code:
+            query += f"postal_code = '{postal_code}', "
+        if rating:
+            query += f"rating = {rating}, "
+        if num_rooms:
+            query += f"num_rooms = {num_rooms}, "
+        if hotel_chain_name:
+            query += f"hotel_chain_name = '{hotel_chain_name}', "
+        query = query[:-2] + f" WHERE hotel_ID = {hotel_ID}"
     elif request.method == 'DELETE':
-        query = f"DELETE FROM employee WHERE hotel_ID = {hotel_ID}"
+        query = f"DELETE FROM hotel WHERE hotel_ID = {hotel_ID}"
 
     cursor.execute(query)
     connection.commit()
