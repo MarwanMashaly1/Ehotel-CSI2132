@@ -31,18 +31,20 @@ CREATE TABLE employee (
 
 CREATE TABLE booking (
     booking_id SERIAL PRIMARY KEY,
+    room_number INT,
+    customer_email VARCHAR(100),
     start_date DATE,
     start_time TIME,
     end_date DATE,
-    end_time TIME
+    end_time TIME,
+    FOREIGN KEY (room_number) REFERENCES room(room_number)
+    FOREIGN KEY (customer_email) REFERENCES customer(email)
 );
 
 CREATE TABLE renting (
     renting_id SERIAL PRIMARY KEY,
-    start_date DATE,
-    start_time TIME,
-    end_date DATE,
-    end_time TIME
+    employee_sin VARCHAR(100),
+    FOREIGN KEY (employee_sin) REFERENCES employee(sin)
 );
 
 CREATE TABLE amenity (
@@ -56,28 +58,6 @@ CREATE TABLE damage (
     description VARCHAR(100)
 );
 
-CREATE TABLE book (
-    booking_id INT,
-    customer_email VARCHAR(100),
-    FOREIGN KEY (booking_id) REFERENCES booking(booking_id),
-    FOREIGN KEY (customer_email) REFERENCES customer(email)
-);
-
-
-CREATE TABLE rent(
-    renting_id INT,
-    customer_email VARCHAR(100),
-    FOREIGN KEY (renting_id) REFERENCES renting(renting_id),
-    FOREIGN KEY (customer_email) REFERENCES customer(email)
-);
-
-CREATE TABLE creates(
-    employee_sin VARCHAR(100),
-    renting_id INT,
-    FOREIGN KEY (employee_sin) REFERENCES employee(sin),
-    FOREIGN KEY (renting_id) REFERENCES renting(renting_id)
-);
-
 CREATE TABLE contact_email (
     contact_email_ID SERIAL PRIMARY KEY,
     email VARCHAR(100)
@@ -87,7 +67,6 @@ CREATE TABLE contact_phone (
     contact_phone_ID SERIAL PRIMARY KEY,
     phone_number VARCHAR(100)
 );
-
 
 CREATE TABLE central_office_address (
     central_office_address_ID SERIAL PRIMARY KEY,
@@ -141,20 +120,6 @@ CREATE TABLE room (
     FOREIGN KEY (damage_ID) REFERENCES damage(damage_ID),
     hotel_ID INT,
     FOREIGN KEY (hotel_ID) REFERENCES hotel(hotel_ID)
-);
-
-CREATE TABLE booked_room (
-    booking_id INT,
-    room_number INT,
-    FOREIGN KEY (booking_id) REFERENCES booking(booking_id),
-    FOREIGN KEY (room_number) REFERENCES room(room_number)
-);
-
-CREATE TABLE rented_room (
-    renting_id INT,
-    room_number INT,
-    FOREIGN KEY (renting_id) REFERENCES renting(renting_id),
-    FOREIGN KEY (room_number) REFERENCES room(room_number)
 );
 
 CREATE TABLE manages (
