@@ -3,8 +3,8 @@ from flask_cors import CORS
 import psycopg2
 
 # Database info (replace with your database details)
-DATABASE="ehotel"
-USER=""
+DATABASE="eHotel"
+USER="postgres"
 PASSWORD=""
 HOST="localhost"
 PORT="5432"
@@ -19,7 +19,7 @@ CORS(app)
 
 @app.teardown_appcontext
 def close_db(error):
-    if 'db' in g:            
+    if 'db' in g:
         g.cursor.close()
         g.db.close()
 
@@ -417,6 +417,7 @@ def booking():
             booking = cursor.fetchall()
             cursor.close()
             connection.close()
+            return booking
         else:
             cursor.close()
             connection.close()
@@ -431,15 +432,18 @@ def booking():
                 connection.close()
                 return 'Room already booked'
             query = f"INSERT INTO booking VALUES (DEFAULT,{room_number},'{customer_email}','{start_date}','{start_time}','{end_date}','{end_time}')"
+            cursor.execute(query)
+            connection.commit()
+            query = f"SELECT booking_ID FROM booking WHERE room_number = {room_number} AND customer_email = '{customer_email}' AND start_date = '{start_date}' AND start_time = '{start_time}' AND end_date = '{end_date}' AND end_time = '{end_time}'"
+            cursor.execute(query)
+            booking_ID = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            return booking_ID
         else:
             cursor.close()
             connection.close()
             return 'Missing parameters'
-    cursor.execute(query)
-    connection.commit()
-    cursor.close()
-    connection.close()
-    return 'OK'
 
 @app.route("/renting", methods=['POST'])
 def renting():
@@ -466,7 +470,6 @@ def renting():
 
 # hotels route
 @app.route("/hotels", methods=['GET'])
-
 def hotels():
     connection = connect()
     cursor = connection.cursor()
@@ -483,10 +486,32 @@ def hotels():
     cursor.close()
     connection.close()
     return hotels
-<<<<<<< HEAD
-=======
-     
->>>>>>> 706d06878465246f9c76db932df85b0069371cff
+
+@app.route("/view1", methods=['GET'])
+def view1():
+    connection = connect()
+    cursor = connection.cursor()
+
+    # Join query to fetch all details including contact email and phone
+    query = "SELECT * FROM rooms_per_area"
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return results
+
+@app.route("/view2", methods=['GET'])
+def view1():
+    connection = connect()
+    cursor = connection.cursor()
+
+    # Join query to fetch all details including contact email and phone
+    query = "SELECT * FROM capacity_in_hilton_lac_leamy"
+    cursor.execute(query)
+    result = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return result
 
 if __name__ == "__main__":
     app.run(port=7777, debug=True)
