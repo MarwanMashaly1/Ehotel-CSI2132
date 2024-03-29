@@ -300,7 +300,11 @@ INSERT INTO contact_phone VALUES
 	-- Hilton Hotels & Resorts
 	(
 		1,
+<<<<<<< HEAD
 		'(800) 4445-8667'
+=======
+		'(800) 444-8667'
+>>>>>>> 84af26953caddde8088bc137b75fb0d80a25bc1f
 	),
 	-- Holiday Inn
 	(

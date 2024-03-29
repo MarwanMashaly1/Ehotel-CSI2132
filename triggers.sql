@@ -79,7 +79,7 @@ DROP CONSTRAINT IF EXISTS chk_ssn_format_employee;
 
 ALTER TABLE employee
 ADD CONSTRAINT chk_ssn_format_employee
-CHECK (sin ~ '^\d{9}$');
+CHECK (sin ~ '^\d{3}-\d{3}-\d{3}$');
 
 -- Check constraint for booking dates
 ALTER TABLE booking
