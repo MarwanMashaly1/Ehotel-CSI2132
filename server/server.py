@@ -1,9 +1,10 @@
 from flask import Flask, request, g
+from flask_cors import CORS
 import psycopg2
 
 # Database info (replace with your database details)
-DATABASE="eHotel"
-USER="postgres"
+DATABASE="ehotel"
+USER=""
 PASSWORD=""
 HOST="localhost"
 PORT="5432"
@@ -13,9 +14,12 @@ def connect():
 
 app = Flask(__name__)
 
+# allow cross-origin requests
+CORS(app)
+
 @app.teardown_appcontext
 def close_db(error):
-    if 'db' in g:
+    if 'db' in g:            
         g.cursor.close()
         g.db.close()
 
@@ -34,7 +38,7 @@ def room():
     view = request.args.get('view', None)
     start_date = request.args.get('startDate', None)
     end_date = request.args.get('endDate', None)
-    wanted_capacity = request.args.get('wantedCapacity', None)
+    wanted_capacity = request.args.get('capacity', None)
     province = request.args.get('province', None)
     city = request.args.get('city', None)
     hotel_chain = request.args.get('hotelChain', None)
@@ -52,7 +56,7 @@ def room():
         # query from user search
         else:
             query = """
-            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price 
+            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price, r.extendable 
             FROM room AS r NATURAL JOIN hotel AS h 
             WHERE NOT EXISTS (
                 SELECT * 
@@ -63,15 +67,15 @@ def room():
             query += f"WHERE (booking.end_date < '{start_date}' OR booking.start_date > '{end_date}')) "
 
             if capacity:
-                query += f"AND r.capacity = {wanted_capacity}"
+                query += f" AND r.capacity = {wanted_capacity}"
             if province:
-                query += f"AND h.province = '{province}' "
+                query += f" AND h.province = {province} "
                 if city: 
-                    query += f"AND h.city = '{city}' "
+                    query += f" AND h.city = {city} "
             if hotel_chain:
-                query += f"AND h.hotel_chain_name = '{hotel_chain}' "
+                query += f" AND h.hotel_chain_name = {hotel_chain} "
             if num_rooms: 
-                query += f"AND h.num_rooms >= {num_rooms} "
+                query += f" AND h.num_rooms >= {num_rooms} "
             # if category:
             #     query += f"AND h.category = {category} "
             if max_price:
@@ -294,6 +298,26 @@ def hotel():
     connection.close()
     return 'OK'
 
+# hotels route
+@app.route("/hotels", methods=['GET'])
+
+def hotels():
+    connection = connect()
+    cursor = connection.cursor()
+
+    # Join query to fetch all details including contact email and phone
+    query = """
+    SELECT h.*, ce.email AS contact_email, cp.phone_number AS contact_phone
+    FROM hotel h
+    LEFT JOIN contact_email ce ON h.contact_email_ID = ce.contact_email_ID
+    LEFT JOIN contact_phone cp ON h.contact_phone_ID = cp.contact_phone_ID
+    """
+    cursor.execute(query)
+    hotels = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return hotels
+     
 
 if __name__ == "__main__":
     # this port must match the port in 'proxy' in package.json
