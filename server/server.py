@@ -3,9 +3,9 @@ from flask_cors import CORS
 import psycopg2
 
 # Database info (replace with your database details)
-DATABASE="eHotel"
-USER="postgres"
-PASSWORD="marwan2000"
+DATABASE="ehotel"
+USER=""
+PASSWORD=""
 HOST="localhost"
 PORT="5432"
 
@@ -14,9 +14,12 @@ def connect():
 
 app = Flask(__name__)
 
+# allow cross-origin requests
+CORS(app)
+
 @app.teardown_appcontext
 def close_db(error):
-    if 'db' in g:
+    if 'db' in g:            
         g.cursor.close()
         g.db.close()
 
@@ -66,34 +69,22 @@ def room():
             if capacity:
                 query += f" AND r.capacity = {wanted_capacity}"
             if province:
-<<<<<<< HEAD
                 query += f" AND h.province = {province} "
                 if city: 
                     query += f" AND h.city = {city} "
             if hotel_chain:
                 query += f" AND h.hotel_chain_name = {hotel_chain} "
-=======
-                query += f"AND h.province = '{province}' "
-                if city: 
-                    query += f"AND h.city = '{city}' "
-            if hotel_chain:
-                query += f"AND h.hotel_chain_name = '{hotel_chain}' "
->>>>>>> 84af26953caddde8088bc137b75fb0d80a25bc1f
             if num_rooms: 
                 query += f" AND h.num_rooms >= {num_rooms} "
             # if category:
             #     query += f"AND h.category = {category} "
             if max_price:
-<<<<<<< HEAD
-                query += f" AND r.price <= {max_price} "
-=======
                 query += f"AND r.price <= {max_price} "
         cursor.execute(query)
         room = cursor.fetchall()
         cursor.close()
         connection.close()
         return room
->>>>>>> 84af26953caddde8088bc137b75fb0d80a25bc1f
     elif request.method == 'POST':
         query = f"INSERT INTO room VALUES ({room_number},{price}.0,null,{capacity},'{view}',{extendable},null,{hotel_ID})"
     elif request.method == 'PUT':
@@ -307,6 +298,26 @@ def hotel():
     connection.close()
     return 'OK'
 
+# hotels route
+@app.route("/hotels", methods=['GET'])
+
+def hotels():
+    connection = connect()
+    cursor = connection.cursor()
+
+    # Join query to fetch all details including contact email and phone
+    query = """
+    SELECT h.*, ce.email AS contact_email, cp.phone_number AS contact_phone
+    FROM hotel h
+    LEFT JOIN contact_email ce ON h.contact_email_ID = ce.contact_email_ID
+    LEFT JOIN contact_phone cp ON h.contact_phone_ID = cp.contact_phone_ID
+    """
+    cursor.execute(query)
+    hotels = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return hotels
+     
 
 if __name__ == "__main__":
     # this port must match the port in 'proxy' in package.json
