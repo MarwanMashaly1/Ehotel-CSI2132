@@ -1,4 +1,4 @@
-DROP TRIGGER IF EXISTS trg_check_end_date ON renting;
+DROP TRIGGER IF EXISTS trg_check_end_date ON booking;
 
 CREATE OR REPLACE FUNCTION check_end_date()
 RETURNS TRIGGER AS $$
@@ -11,7 +11,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trg_check_end_date
-BEFORE INSERT OR UPDATE ON renting
+BEFORE INSERT OR UPDATE ON booking
 FOR EACH ROW EXECUTE FUNCTION check_end_date();
 
 -- Check trigger for email format
@@ -82,19 +82,11 @@ ADD CONSTRAINT chk_ssn_format_employee
 CHECK (sin ~ '^\d{3}-\d{3}-\d{3}$');
 
 -- Check constraint for booking dates
-ALTER TABLE renting 
+ALTER TABLE booking 
 DROP CONSTRAINT IF EXISTS check_booking_dates;
 
-ALTER TABLE renting
+ALTER TABLE booking
 ADD CONSTRAINT check_booking_dates
-CHECK (start_date < end_date);
-
--- Check constraint for renting dates
-ALTER TABLE renting
-DROP CONSTRAINT IF EXISTS check_renting_dates;
-
-ALTER TABLE renting
-ADD CONSTRAINT check_renting_dates
 CHECK (start_date < end_date);
 
 -- Check constraint for phone number format on contact_phone table

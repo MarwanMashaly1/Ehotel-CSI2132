@@ -125,6 +125,8 @@ CREATE TABLE booking (
 
 CREATE TABLE renting (
     renting_id SERIAL PRIMARY KEY,
+    booking_ID INT,
     employee_sin VARCHAR(100),
+    FOREIGN KEY (booking_ID) REFERENCES booking,
     FOREIGN KEY (employee_sin) REFERENCES employee(sin)
 );
