@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./Pages/Home";
 import Customers from "./Pages/customerPortal";
 import Employees from "./Pages/employeePortal";
+import Hotels from "./Pages/hotels";
 import Rooms from "./Pages/rooms";
 // import Employees from "./Pages/Employees";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/employees" element={<Employees />} />
-          <Route path="/hotels" element={<Home />} />
+          <Route path="/hotels" element={<Hotels />} />
           <Route path="/rooms" element={<Rooms />} />
         </Routes>
       </BrowserRouter>

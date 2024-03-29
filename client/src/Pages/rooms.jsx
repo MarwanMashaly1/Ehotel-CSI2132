@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { rooms, hotels } from "../components/mockdata";
+import { Typography } from "@mui/material";
+
 import RoomFilters from "../components/roomFilter";
 import RoomCard from "../components/roomCard";
-import { Typography } from "@mui/material";
-import RoomList from "../components/roomsList";
 
 function Rooms() {
   const [filters, setFilters] = useState({});
@@ -12,14 +11,18 @@ function Rooms() {
 
   const fetchRooms = async () => {
     setLoading(true);
+    const queryParams = new URLSearchParams(filters).toString();
     try {
-      const response = await fetch(`http://localhost:7777/room`, {
-        method: "GET",
-        headers: {
-          // Your required headers
-        },
-        // Construct query parameters from filters
-      });
+      const response = await fetch(
+        `http://localhost:7777/room?${queryParams}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json", // assuming your API returns JSON
+            // Add any other headers needed for authentication or other purposes
+          },
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         setRooms(data);
@@ -34,11 +37,11 @@ function Rooms() {
   };
 
   useEffect(() => {
-    fetchRooms();
+    fetchRooms(); // Fetch rooms when the component mounts and when filters change
   }, [filters]);
 
   const handleFilterChange = (newFilters) => {
-    setFilters(newFilters);
+    setFilters(newFilters); // This will trigger the useEffect and thus re-fetch the rooms
   };
 
   const handleClearFilters = () => {
@@ -57,8 +60,10 @@ function Rooms() {
       />
       {loading ? (
         <Typography>Loading...</Typography>
+      ) : rooms.length > 0 ? (
+        rooms.map((room, index) => <RoomCard key={index} room={room} />)
       ) : (
-        rooms.map((room) => <RoomCard key={room.room_number} room={room} />)
+        <Typography>No rooms available with the selected filters.</Typography>
       )}
     </div>
   );

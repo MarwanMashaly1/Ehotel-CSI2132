@@ -82,10 +82,10 @@ ADD CONSTRAINT chk_ssn_format_employee
 CHECK (sin ~ '^\d{3}-\d{3}-\d{3}$');
 
 -- Check constraint for booking dates
-ALTER TABLE booking
+ALTER TABLE renting 
 DROP CONSTRAINT IF EXISTS check_booking_dates;
 
-ALTER TABLE booking
+ALTER TABLE renting
 ADD CONSTRAINT check_booking_dates
 CHECK (start_date < end_date);
 
