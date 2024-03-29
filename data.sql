@@ -300,27 +300,27 @@ INSERT INTO contact_phone VALUES
 	-- Hilton Hotels & Resorts
 	(
 		1,
-		'1 (800) 4445-8667'
+		'(800) 4445-8667'
 	),
 	-- Holiday Inn
 	(
 		2,
-		'1 (888) 465-4329'
+		'(888) 465-4329'
 	),
 	-- Sheraton Hotels and Resorts
 	(
 		3,
-		'1 (800) 325-3535'
+		'(800) 325-3535'
 	),
 	-- Marriott Hotels & Resorts
 	(
 		4,
-		'1 (800) 535-4028'
+		'(800) 535-4028'
 	),
 	-- Sandman Hotel Group
 	(
 		5,
-		'1 (800) 726-3626'
+		'(800) 726-3626'
 	),
 	
 	-- Hotels

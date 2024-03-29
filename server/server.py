@@ -1,27 +1,23 @@
 from flask import Flask, request, g
+from flask_cors import CORS
 import psycopg2
-
-# # Database info (replace with your database details)
-# DATABASE=""
-# USER=""
-# PASSWORD=""
-# HOST=""
-# PORT=""
 
 connection = psycopg2.connect(database="ehotel",
                                 user="postgres",
-                                password="",
+                                password="marwan2000",
                                 host="localhost",
                                 port="5432")
 cursor = connection.cursor()
 
 app = Flask(__name__)
 
+CORS(app, resources={r"/room": {"origins": "http://localhost:3000"}})  # Adjust the port if your React app runs on a different one
+
 def get_db():
     if 'db' not in g:
         g.db = psycopg2.connect(database="ehotel",
                                 user="postgres",
-                                password="",
+                                password="marwan2000",
                                 host="localhost",
                                 port="5432")
         g.cursor = g.db.cursor()
@@ -47,7 +43,7 @@ def room():
     view = request.args.get('view', None)
     start_date = request.args.get('startDate', None)
     end_date = request.args.get('endDate', None)
-    wanted_capacity = request.args.get('wantedCapacity', None)
+    wanted_capacity = request.args.get('capacity', None)
     province = request.args.get('province', None)
     city = request.args.get('city', None)
     hotel_chain = request.args.get('hotelChain', None)
@@ -65,7 +61,7 @@ def room():
         # query from user search
         else:
             query = """
-            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price 
+            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price, r.extendable 
             FROM room AS r NATURAL JOIN hotel AS h 
             WHERE NOT EXISTS (
                 SELECT * 
@@ -79,19 +75,19 @@ def room():
                 query += ")"
 
             if capacity:
-                query += f"AND r.capacity = {wanted_capacity}"
+                query += f" AND r.capacity = {wanted_capacity}"
             if province:
-                query += f"AND h.province = {province} "
+                query += f" AND h.province = {province} "
                 if city: 
-                    query += f"AND h.city = {city} "
+                    query += f" AND h.city = {city} "
             if hotel_chain:
-                query += f"AND h.hotel_chain_name = {hotel_chain} "
+                query += f" AND h.hotel_chain_name = {hotel_chain} "
             if num_rooms: 
-                query += f"AND h.num_rooms >= {num_rooms} "
+                query += f" AND h.num_rooms >= {num_rooms} "
             # if category:
             #     query += f"AND h.category = {category} "
             if max_price:
-                query += f"AND r.price <= {max_price} "
+                query += f" AND r.price <= {max_price} "
     elif request.method == 'POST':
         query = f"INSERT INTO room VALUES (DEFAULT,{price},null,{capacity},{view},false,null,{hotel_ID})"
     elif request.method == 'PUT':
