@@ -13,14 +13,6 @@ const EmployeePortal = () => {
       </p>
 
       <div>
-        <Typography variant="h6">Hotel Chains</Typography>
-        <Typography variant="body1">
-          View the different hotel chains available.
-        </Typography>
-        <Button variant="contained" color="primary" href="/hotel-chains">
-          View Hotel Chains
-        </Button>
-
         <Typography variant="h6">Hotels</Typography>
         <Typography variant="body1">
           View the different hotels available.
@@ -41,7 +33,7 @@ const EmployeePortal = () => {
         <Typography variant="body1">
           View the different customers available.
         </Typography>
-        <Button variant="contained" color="primary" href="/customers">
+        <Button variant="contained" color="primary" href="/customersList">
           View Customers
         </Button>
 
@@ -49,7 +41,7 @@ const EmployeePortal = () => {
         <Typography variant="body1">
           View the different employees available.
         </Typography>
-        <Button variant="contained" color="primary" href="/employees">
+        <Button variant="contained" color="primary" href="/employeesList">
           View Employees
         </Button>
 
@@ -66,7 +58,7 @@ const EmployeePortal = () => {
           View the different rentings available.
         </Typography>
         <Button variant="contained" color="primary" href="/rentings">
-          View Rentings
+          Create and View Rentings
         </Button>
       </div>
     </div>

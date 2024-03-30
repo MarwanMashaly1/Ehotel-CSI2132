@@ -1,10 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Home from "./Pages/Home";
 import Customers from "./Pages/customerPortal";
+import CustomersList from "./Pages/customersList";
+import EmployeesList from "./Pages/EmployeesList";
 import Employees from "./Pages/employeePortal";
 import Hotels from "./Pages/hotels";
 import Rooms from "./Pages/rooms";
+import Bookings from "./Pages/Bookings";
 // import Employees from "./Pages/Employees";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import react router
@@ -19,6 +21,9 @@ function App() {
           <Route path="/employees" element={<Employees />} />
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/rooms" element={<Rooms />} />
+          <Route path="/customersList" element={<CustomersList />} />
+          <Route path="/employeesList" element={<EmployeesList />} />
+          <Route path="/bookings" element={<Bookings />} />
         </Routes>
       </BrowserRouter>
     </div>

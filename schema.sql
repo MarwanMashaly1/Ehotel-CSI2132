@@ -76,6 +76,7 @@ CREATE TABLE room (
 CREATE TABLE customer (
     email VARCHAR(100) PRIMARY KEY,
     password VARCHAR(100),
+    identification VARCHAR(100),
     first_name VARCHAR(100),
     last_name VARCHAR(100),
     street_number VARCHAR(100),

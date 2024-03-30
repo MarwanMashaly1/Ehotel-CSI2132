@@ -4,8 +4,8 @@ import psycopg2
 
 # Database info (replace with your database details)
 DATABASE="ehotel"
-USER=""
-PASSWORD=""
+USER="postgres"
+PASSWORD="marwan2000"
 HOST="localhost"
 PORT="5432"
 
@@ -165,6 +165,19 @@ def customer():
     connection.close()
     return 'OK'
 
+#  route for all customers
+@app.route("/customers", methods=['GET'])
+def customers():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM customer"
+    cursor.execute(query)
+    customers = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return customers
+
+
 # route with parameters should look like "/employee?sin=101-010-101"
 @app.route("/employee", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def employee():
@@ -237,6 +250,18 @@ def employee():
     cursor.close()
     connection.close()
     return 'OK'
+
+# route for all employees
+@app.route("/employees", methods=['GET'])
+def employees():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM employee"
+    cursor.execute(query)
+    employees = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return employees
 
 # route with parameters should look like "/hotel?hotelID=1"
 @app.route("/hotel", methods=['GET', 'POST', 'PUT', 'DELETE'])
