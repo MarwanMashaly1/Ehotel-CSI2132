@@ -501,7 +501,7 @@ def view1():
     return results
 
 @app.route("/view2", methods=['GET'])
-def view1():
+def view2():
     connection = connect()
     cursor = connection.cursor()
 
