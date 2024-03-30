@@ -3,7 +3,7 @@ from flask_cors import CORS
 import psycopg2
 
 # Database info (replace with your database details)
-DATABASE="eHotel"
+DATABASE="ehotel"
 USER="postgres"
 PASSWORD=""
 HOST="localhost"
@@ -138,7 +138,7 @@ def customer():
     last_name = request.args.get('lastName', None)
     street_number = request.args.get('streetNumber', None)
     street_name = request.args.get('streetName', None)
-    apt_number = request.args.get('aptNumber', None)
+    apt_number = request.args.get('aptNumber', 'null')
     city = request.args.get('city', None)
     province = request.args.get('province', None)
     postal_code = request.args.get('postalCode', None)
