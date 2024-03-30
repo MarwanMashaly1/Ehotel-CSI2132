@@ -138,7 +138,7 @@ def customer():
     last_name = request.args.get('lastName', None)
     street_number = request.args.get('streetNumber', None)
     street_name = request.args.get('streetName', None)
-    apt_number = request.args.get('aptNumber', 'null')
+    apt_number = request.args.get('aptNumber', None)
     city = request.args.get('city', None)
     province = request.args.get('province', None)
     postal_code = request.args.get('postalCode', None)
