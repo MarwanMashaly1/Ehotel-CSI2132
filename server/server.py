@@ -61,18 +61,17 @@ def room():
             FROM room AS r NATURAL JOIN hotel AS h 
             WHERE NOT EXISTS (
                 SELECT * 
-                FROM room 
-                NATURAL JOIN hotel 
+                FROM room AS option
                 NATURAL LEFT JOIN booking """
-            query += f"WHERE (booking.end_date < '{start_date}' OR booking.start_date > '{end_date}')) "
+            query += f"WHERE option.room_number = r.room_number AND NOT (booking.end_date < '{start_date}' OR booking.start_date > '{end_date}')) "
             if capacity:
                 query += f" AND r.capacity = {wanted_capacity}"
             if province:
-                query += f" AND h.province = {province} "
-                if city: 
-                    query += f" AND h.city = {city} "
+                query += f" AND h.province = '{province}' "
+            if city: 
+                query += f" AND h.city = '{city}' "
             if hotel_chain:
-                query += f" AND h.hotel_chain_name = {hotel_chain} "
+                query += f" AND h.hotel_chain_name = '{hotel_chain}' "
             if num_rooms: 
                 query += f" AND h.num_rooms >= {num_rooms} "
             # if category:
@@ -82,7 +81,7 @@ def room():
         else:
             cursor.close()
             connection.close()
-            return 'Missing parameters'
+            return 'Missing roomNumber OR (startDate AND endDate)'
         cursor.execute(query)
         room = cursor.fetchall()
         cursor.close()
@@ -94,7 +93,7 @@ def room():
         else:
             cursor.close()
             connection.close()
-            return 'Missing parameters'
+            return 'Missing at least one of roomNumber, price, capacity, view, extendable, hotelID'
     elif request.method == 'PUT':
         if room_number:
             query = "UPDATE room SET "
@@ -110,18 +109,15 @@ def room():
         else:
             cursor.close()
             connection.close()
-            return 'Missing room_number'
+            return 'Missing roomNumber'
     elif request.method == 'DELETE':
         if room_number:
-            query = f"DELETE FROM amenity WHERE amenity_ID = ANY (SELECT amenity_ID FROM room WHERE room_number = {room_number}); "
-            query += f"DELETE FROM damage WHERE damage_ID = ANY (SELECT damage_ID FROM room WHERE room_number = {room_number}); "
-            query += f"UPDATE booking SET room_number = null WHERE room_number = {room_number}; "
-            query += f"UPDATE renting SET room_number = null WHERE room_number = {room_number}; "
+            query = f"UPDATE booking SET room_number = null WHERE room_number = {room_number}; "
             query += f"DELETE FROM room WHERE room_number = {room_number};"
         else:
             cursor.close()
             connection.close()
-            return 'Missing room_number'
+            return 'Missing roomNumber'
 
     cursor.execute(query)
     connection.commit()
@@ -166,7 +162,7 @@ def customer():
         else:
             cursor.close()
             connection.close()
-            return 'Missing parameters'
+            return 'Missing at least one of email, password, firstName, lastName, streetNumber, streetName, aptNumber, city, province, postalCode, registerDate'
     elif request.method == 'PUT':
         if email:
             query = "UPDATE customer SET "
@@ -197,8 +193,7 @@ def customer():
             return 'Missing email'
     elif request.method == 'DELETE':
         if email:
-            query = f"UPDATE booking SET customer_email = null WHERE customer_email = {email}; "
-            query += f"UPDATE renting SET customer_email = null WHERE customer_email = {email}; "
+            query = f"UPDATE booking SET customer_email = null WHERE customer_email = '{email}'; "
             query += f"DELETE FROM customer WHERE email = '{email}'"
         else:
             cursor.close()
@@ -252,7 +247,7 @@ def employee():
         else:
             cursor.close()
             connection.close()
-            return 'Missing parameters'
+            return 'Missing at least one of sin, password, firstName, lastName, streetNumber, streetName, aptNumber, city, province, postalCode, rating, empRole, hotelID'
     elif request.method == 'PUT':
         if sin:
             query = "UPDATE employee SET "
@@ -280,22 +275,24 @@ def employee():
                 query += f"emp_role = '{emp_role}', "
             if hotel_ID:
                 query += f"hotel_ID = {hotel_ID}, "
+                if not emp_role:
+                    return 'Missing empRole'
             query = query[:-2] + f" WHERE sin = '{sin}'"
             if emp_role == "manager":
                 if hotel_ID:
-                    query += f";DELETE FROM manages WHERE (employee_sin = '{sin}' OR hotel_ID = {hotel_ID})"
+                    query += f";DELETE FROM manages WHERE employee_sin = '{sin}'"
                     query += f";INSERT INTO manages VALUES ('{sin}',{hotel_ID})"
                 else:
                     cursor.close()
                     connection.close()
-                    return 'Missing hotel_ID'
+                    return 'Missing hotelID'
         else:
             cursor.close()
             connection.close()
             return 'Missing sin'
     elif request.method == 'DELETE':
         if sin:
-            query = f"UPDATE manages SET employee_sin = null WHERE employee_sin = '{sin}'; "
+            query = f"DELETE FROM manages WHERE employee_sin = '{sin}'; "
             query += f"UPDATE renting SET employee_sin = null WHERE employee_sin = '{sin}'; "
             query += f"DELETE FROM employee WHERE sin = '{sin}'"
         else:
@@ -338,14 +335,14 @@ def hotel():
         else:
             cursor.close()
             connection.close()
-            return 'Missing hotel_ID'
+            return 'Missing hotelID'
     elif request.method == 'POST':
         if hotel_ID and name and street_number and street_name and apt_number and city and province and postal_code and rating and num_rooms and hotel_chain_name:
-            query = f"INSERT INTO hotel VALUES ({hotel_ID},'{name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}',{rating},{num_rooms},'{hotel_chain_name}')"
+            query = f"INSERT INTO hotel VALUES ({hotel_ID},'{name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}',{rating},{num_rooms},null,null,'{hotel_chain_name}')"
         else:
             cursor.close()
             connection.close()
-            return 'Missing parameters'
+            return 'Missing at least one of hotelID, name, streetNumber, streetName, aptNumber, city, province, postalCode, rating, numRooms, hotelChainName'
     elif request.method == 'PUT':
         if hotel_ID:
             query = "UPDATE hotel SET "
@@ -373,22 +370,18 @@ def hotel():
         else:
             cursor.close()
             connection.close()
-            return 'Missing hotel_ID'
+            return 'Missing hotelID'
     elif request.method == 'DELETE':
         if hotel_ID:
-            query = f"DELETE FROM contact_email WHERE contact_email_ID = ANY (SELECT contact_email_ID FROM hotel WHERE hotel_ID = {hotel_ID}); "
-            query += f"DELETE FROM contact_phone WHERE contact_phone_ID = ANY (SELECT contact_phone_ID FROM hotel WHERE hotel_ID = {hotel_ID}); "
-            query += f"DELETE FROM amenity WHERE amenity_ID = ANY (SELECT amenity_ID FROM room WHERE hotel_ID = {hotel_ID}); "
-            query += f"DELETE FROM damage WHERE damage_ID = ANY (SELECT damage_ID FROM room WHERE hotel_ID = {hotel_ID}); "
-            query += f"UPDATE booking SET room_number = null WHERE room_number = ANY (SELECT room_number FROM room WHERE hotel_ID = {hotel_ID}); "
-            query += f"UPDATE renting SET room_number = null WHERE room_number = ANY (SELECT room_number FROM room WHERE hotel_ID = {hotel_ID}); "
+            query = f"UPDATE employee SET hotel_ID = null WHERE hotel_ID = ANY (SELECT hotel_ID FROM employee WHERE hotel_ID = {hotel_ID}); "
+            query += f"UPDATE booking SET room_number = null emp_role = 'pending' WHERE room_number = ANY (SELECT room_number FROM room WHERE hotel_ID = {hotel_ID}); "
             query += f"DELETE FROM manages WHERE hotel_ID = {hotel_ID}; "
             query += f"DELETE FROM room WHERE hotel_ID = {hotel_ID}; "
             query += f"DELETE FROM hotel WHERE hotel_ID = {hotel_ID}; "
         else:
             cursor.close()
             connection.close()
-            return 'Missing hotel_ID'
+            return 'Missing hotelID'
 
     cursor.execute(query)
     connection.commit()
@@ -407,12 +400,17 @@ def booking():
     customer_email = request.args.get('customerEmail', None)
     start_date = request.args.get('startDate', None)
     end_date = request.args.get('endDate', None)
-    start_time = request.args.get('startTime', None)
-    end_time = request.args.get('endTime', None)
     
     if request.method == 'GET':
-        if customer_email:
-            query = f"SELECT * FROM booking WHERE customer_email = {customer_email}"
+        if booking_ID:
+            query = f"SELECT * FROM booking WHERE booking_ID = {booking_ID}"
+            cursor.execute(query)
+            booking = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            return booking
+        elif customer_email:
+            query = f"SELECT * FROM booking WHERE customer_email = '{customer_email}'"
             cursor.execute(query)
             booking = cursor.fetchall()
             cursor.close()
@@ -421,9 +419,9 @@ def booking():
         else:
             cursor.close()
             connection.close()
-            return 'Missing customer_email'
+            return 'Missing customerEmail'
     elif request.method == 'POST':
-        if room_number and customer_email and start_date and start_time and end_date and end_time:
+        if room_number and customer_email and start_date and end_date:
             query = f"SELECT * FROM room NATURAL LEFT JOIN booking WHERE (room_number = {room_number} AND (booking.end_date < '{start_date}' OR booking.start_date > '{end_date}')) "
             cursor.execute(query)
             room = cursor.fetchall()
@@ -431,10 +429,10 @@ def booking():
                 cursor.close()
                 connection.close()
                 return 'Room already booked'
-            query = f"INSERT INTO booking VALUES (DEFAULT,{room_number},'{customer_email}','{start_date}','{start_time}','{end_date}','{end_time}')"
+            query = f"INSERT INTO booking VALUES (DEFAULT,{room_number},'{customer_email}','{start_date}','{end_date}')"
             cursor.execute(query)
             connection.commit()
-            query = f"SELECT booking_ID FROM booking WHERE room_number = {room_number} AND customer_email = '{customer_email}' AND start_date = '{start_date}' AND start_time = '{start_time}' AND end_date = '{end_date}' AND end_time = '{end_time}'"
+            query = f"SELECT booking_ID FROM booking WHERE room_number = {room_number} AND customer_email = '{customer_email}' AND start_date = '{start_date}' AND end_date = '{end_date}'"
             cursor.execute(query)
             booking_ID = cursor.fetchall()
             cursor.close()
@@ -443,30 +441,45 @@ def booking():
         else:
             cursor.close()
             connection.close()
-            return 'Missing parameters'
+            return 'Missing at least one of roomNumber, customerEmail, startDate, startTime, endDate, endTime'
 
-@app.route("/renting", methods=['POST'])
+@app.route("/renting", methods=['GET','POST'])
 def renting():
 
     connection = connect()
     cursor = connection.cursor()
 
+    renting_ID = request.args.get('rentingID', None)
     booking_ID = request.args.get('bookingID', None)
     employee_sin = request.args.get('employeeSin', None)
 
+    if request.method == 'GET':
+        if renting_ID:
+            query = f"SELECT * FROM renting WHERE renting_ID = {renting_ID}"
+        elif employee_sin:
+            query = f"SELECT * FROM renting WHERE employee_sin = '{employee_sin}'"
+        else:
+            return 'Missing rentingID OR employeeSin'
+        cursor.execute(query)
+        rentings = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return rentings
     if request.method == 'POST':
         if booking_ID and employee_sin:
-            query = f"INSERT INTO renting VALUES (DEFAULT,{booking_ID},{employee_sin})"
+            query = f"INSERT INTO renting VALUES (DEFAULT,{booking_ID},'{employee_sin}')"
+            cursor.execute(query)
+            connection.commit()
+            query = f"SELECT renting_ID FROM renting WHERE booking_ID = {booking_ID}"
+            cursor.execute(query)
+            renting_ID = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            return renting_ID
         else:
             cursor.close()
             connection.close()
-            return 'Missing parameters'
-   
-    cursor.execute(query)
-    connection.commit()
-    cursor.close()
-    connection.close()
-    return 'OK'
+            return 'Missing bookingID OR employeeSIN'
 
 # hotels route
 @app.route("/hotels", methods=['GET'])

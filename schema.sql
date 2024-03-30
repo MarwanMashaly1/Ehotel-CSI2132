@@ -116,9 +116,7 @@ CREATE TABLE booking (
     room_number INT,
     customer_email VARCHAR(100),
     start_date DATE,
-    start_time TIME,
     end_date DATE,
-    end_time TIME,
     FOREIGN KEY (room_number) REFERENCES room(room_number),
     FOREIGN KEY (customer_email) REFERENCES customer(email)
 );

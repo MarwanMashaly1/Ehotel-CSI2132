@@ -3188,3 +3188,7 @@ INSERT INTO room VALUES
 		40
 	)
 ;
+
+INSERT INTO customer VALUES ('john@doe.com', 'password', 'John', 'Doe', '5', 'Road rd.', '1', 'Ottawa', 'Ontario', 'K2J0K2','2023-02-03');
+INSERT INTO employee VALUES ('111-111-111', 'pass', 'Jane', 'Doe', '11', 'Pavement circle', '2', 'Ottawa', 'Ontario', 'K2J0J8', 5.0, 'manager', 40);
+INSERT INTO manages VALUES ('111-111-111', 40);
