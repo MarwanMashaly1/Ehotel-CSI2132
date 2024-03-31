@@ -6,19 +6,32 @@ import {
   TextField,
   DialogActions,
   Button,
+  Typography,
 } from "@mui/material";
 
 const ConfirmBookingModal = ({ open, onClose, booking, onConfirm }) => {
-  const [paymentInfo, setPaymentInfo] = useState("");
+  // Initialize the state with structure for rental info
+  const [rentInfo, setRentInfo] = useState({
+    employeeSin: "",
+    paymentInfo: "",
+    cvv: "",
+    date: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setRentInfo({ ...rentInfo, [name]: value });
+  };
 
   const handleConfirm = async () => {
-    // Here, you would send the request to your backend to update the booking's status
-    // and include payment information. This is a placeholder example.
     try {
-      await fetch(`http://localhost:7777/confirmBooking/${booking.id}`, {
+      await fetch(`http://localhost:7777/renting`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paymentInfo }),
+        body: JSON.stringify({
+          bookingID: booking[0],
+          employeeSin: rentInfo.employeeSin,
+        }),
       });
       onConfirm();
       onClose();
@@ -29,17 +42,53 @@ const ConfirmBookingModal = ({ open, onClose, booking, onConfirm }) => {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Confirm Booking #{booking.id}</DialogTitle>
+      <DialogTitle>Confirm Booking #{booking[0]}</DialogTitle>
       <DialogContent>
         <TextField
           autoFocus
           margin="dense"
-          label="Payment Information"
+          label="Card Number"
           type="text"
           fullWidth
           variant="outlined"
-          value={paymentInfo}
-          onChange={(e) => setPaymentInfo(e.target.value)}
+          name="paymentInfo" // Match state key
+          value={rentInfo.paymentInfo}
+          onChange={handleChange}
+        />
+        <TextField
+          margin="dense"
+          label="CVV"
+          type="text"
+          fullWidth
+          variant="outlined"
+          name="cvv" // Match state key
+          value={rentInfo.cvv}
+          onChange={handleChange}
+        />
+        <TextField
+          margin="dense"
+          label="Expiration Date"
+          type="date"
+          fullWidth
+          variant="outlined"
+          name="date" // Match state key
+          value={rentInfo.date}
+          onChange={handleChange}
+          InputLabelProps={{ shrink: true }}
+        />
+
+        <Typography variant="h6" gutterBottom>
+          Employee Information
+        </Typography>
+        <TextField
+          margin="dense"
+          label="Employee SIN"
+          type="text"
+          fullWidth
+          variant="outlined"
+          name="employeeSin" // Match state key
+          value={rentInfo.employeeSin}
+          onChange={handleChange}
         />
       </DialogContent>
       <DialogActions>

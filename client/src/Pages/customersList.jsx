@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Card, CardContent, Typography } from "@mui/material";
+import { Grid, Card, CardContent, Typography, IconButton } from "@mui/material";
 import CustomerModal from "../components/customerModal";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 const CustomersList = () => {
   const [customers, setCustomers] = useState([]);
@@ -15,6 +17,24 @@ const CustomersList = () => {
       setCustomers(data);
     } catch (error) {
       console.error("Error fetching customers:", error);
+    }
+  };
+
+  const handleDeleteCustomer = async (email) => {
+    if (window.confirm("Are you sure you want to delete this customer?")) {
+      try {
+        const response = await fetch(
+          `http://localhost:7777/customer?email=${encodeURIComponent(email)}`,
+          {
+            method: "DELETE",
+          }
+        );
+        if (!response.ok) throw new Error("Failed to delete customer");
+        setModalOpen(false); // Close any open modal
+        fetchCustomers(); // Refresh the list after deletion
+      } catch (error) {
+        console.error("Error deleting customer:", error);
+      }
     }
   };
 
@@ -45,6 +65,23 @@ const CustomersList = () => {
                 <Typography color="text.secondary">
                   {customer[4]}, {customer[5]}, {customer[6]}, {customer[7]}
                 </Typography>
+
+                <IconButton
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpenModal(customer);
+                  }}
+                >
+                  <EditIcon />
+                </IconButton>
+                <IconButton
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDeleteCustomer(customer.email);
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
               </CardContent>
             </Card>
           </Grid>
