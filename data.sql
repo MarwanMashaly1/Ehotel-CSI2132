@@ -585,7 +585,7 @@ INSERT INTO hotel VALUES
 		'Gatineau',
 		'Quebec',
 		'J8Y6X4',
-		4.5,
+		5,
 		349,
 		6,
 		6,
@@ -600,7 +600,7 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1R 0C7',
-		4.3,
+		4,
 		175,
 		7,
 		7,
@@ -615,7 +615,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H3A0B1',
-		4.2,
+		3,
 		221,
 		8,
 		8,
@@ -630,7 +630,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H5B1E5',
-		4.2,
+		4,
 		595,
 		9,
 		9,
@@ -645,7 +645,7 @@ INSERT INTO hotel VALUES
 		'Markham',
 		'Ontario',
 		'L6G1A5',
-		4.2,
+		4,
 		502,
 		10,
 		10,
@@ -660,7 +660,7 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5G1R3',
-		4.1,
+		4,
 		490,
 		11,
 		11,
@@ -675,7 +675,7 @@ INSERT INTO hotel VALUES
 		'Niagara Falls',
 		'Ontario',
 		'L2G3V9',
-		3.9,
+		2,
 		1083,
 		12,
 		12,
@@ -690,7 +690,7 @@ INSERT INTO hotel VALUES
 		'Mont-Tremblant',
 		'Quebec',
 		'J8E1E1',
-		4.3,
+		4,
 		101,
 		13,
 		13,
@@ -707,7 +707,7 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1J7T4',
-		3.8,
+		3,
 		256,
 		14,
 		14,
@@ -722,7 +722,7 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1R5A7',
-		4.0,
+		4,
 		177,
 		15,
 		15,
@@ -737,7 +737,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H2Z0B4',
-		4.1,
+		3,
 		221,
 		16,
 		16,
@@ -752,7 +752,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H8T1A6',
-		3.8,
+		3,
 		154,
 		17,
 		17,
@@ -767,7 +767,7 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5B2E9',
-		3.9,
+		3,
 		513,
 		18,
 		18,
@@ -782,7 +782,7 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5C2T9',
-		4.1,
+		3,
 		195,
 		19,
 		19,
@@ -797,7 +797,7 @@ INSERT INTO hotel VALUES
 		'Niagara Falls',
 		'Ontario',
 		'L2G2J3',
-		3.7,
+		3,
 		122,
 		20,
 		20,
@@ -812,7 +812,7 @@ INSERT INTO hotel VALUES
 		'Mont-Tremblant',
 		'Quebec',
 		'J8E1C9',
-		4.2,
+		4,
 		141,
 		21,
 		21,
@@ -829,7 +829,7 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1P5G2',
-		4.3,
+		4,
 		236,
 		22,
 		22,
@@ -844,7 +844,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H9P1B7',
-		4.1,
+		3,
 		465,
 		23,
 		23,
@@ -859,7 +859,7 @@ INSERT INTO hotel VALUES
 		'Laval',
 		'Quebec',
 		'H7T1X5',
-		4.3,
+		4,
 		238,
 		24,
 		24,
@@ -874,7 +874,7 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5H2M9',
-		4.3,
+		5,
 		1472,
 		25,
 		25,
@@ -889,7 +889,7 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M9W1J5',
-		4.2,
+		4,
 		249,
 		26,
 		26,
@@ -904,7 +904,7 @@ INSERT INTO hotel VALUES
 		'Richmond Hill',
 		'Ontario',
 		'L4B1B2',
-		4.2,
+		4,
 		311,
 		27,
 		27,
@@ -919,7 +919,7 @@ INSERT INTO hotel VALUES
 		'Niagara Falls',
 		'Ontario',
 		'L2G3K7',
-		4.1,
+		3,
 		669,
 		28,
 		28,
@@ -934,7 +934,7 @@ INSERT INTO hotel VALUES
 		'Thorold',
 		'Ontario',
 		'L2V4Y6',
-		4.1,
+		4,
 		124,
 		29,
 		29,
@@ -951,7 +951,7 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1P5R7',
-		4.2,
+		4,
 		489,
 		30,
 		30,
@@ -966,7 +966,7 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1K4S3',
-		4.4,
+		4,
 		393,
 		31,
 		31,
@@ -981,7 +981,7 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1R5T9',
-		4.3,
+		5,
 		410,
 		32,
 		32,
@@ -996,7 +996,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H3B4C9',
-		4.4,
+		4,
 		596,
 		33,
 		33,
@@ -1011,7 +1011,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H2Z0A6',
-		4.4,
+		3,
 		210,
 		34,
 		34,
@@ -1026,7 +1026,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H2L4C6',
-		4.1,
+		4,
 		154,
 		35,
 		35,
@@ -1041,7 +1041,7 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5G2L2',
-		4.4,
+		3,
 		461,
 		36,
 		36,
@@ -1056,7 +1056,7 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5V1J4',
-		4.4,
+		4,
 		344,
 		37,
 		37,
@@ -1073,7 +1073,7 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K2E0B7',
-		4.6,
+		5,
 		201,
 		38,
 		38,
@@ -1088,7 +1088,7 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'J4K2T1',
-		3.9,
+		2,
 		214,
 		39,
 		39,
@@ -1103,7 +1103,7 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M9W 7K7',
-		4.2,
+		5,
 		256,
 		40,
 		40,
@@ -1118,7 +1118,7 @@ INSERT INTO hotel VALUES
 		'Hamilton',
 		'Quebec',
 		'L8E0G2',
-		4.2,
+		1,
 		208,
 		41,
 		41,
@@ -1133,7 +1133,7 @@ INSERT INTO hotel VALUES
 		'Vancouver',
 		'British Columbia',
 		'V6B4P4',
-		4.0,
+		2,
 		302,
 		42,
 		42,
@@ -1148,7 +1148,7 @@ INSERT INTO hotel VALUES
 		'Richmond',
 		'British Columbia',
 		'V6X3K4',
-		3.8,
+		4,
 		171,
 		43,
 		43,
@@ -1163,7 +1163,7 @@ INSERT INTO hotel VALUES
 		'Victoria',
 		'British Columbia',
 		'V8T4M5',
-		4.1,
+		4,
 		100,
 		44,
 		4,
@@ -1178,7 +1178,7 @@ INSERT INTO hotel VALUES
 		'Calgary',
 		'Alberta',
 		'T2P3J3',
-		3.8,
+		3,
 		300,
 		45,
 		45,
@@ -3192,3 +3192,39 @@ INSERT INTO room VALUES
 INSERT INTO customer VALUES ('john@doe.com', 'password', 'John', 'Doe', '5', 'Road rd.', '1', 'Ottawa', 'Ontario', 'K2J0K2','2023-02-03');
 INSERT INTO employee VALUES ('111-111-111', 'pass', 'Jane', 'Doe', '11', 'Pavement circle', '2', 'Ottawa', 'Ontario', 'K2J0J8', 5.0, 'manager', 40);
 INSERT INTO manages VALUES ('111-111-111', 40);
+INSERT INTO amenity (name) VALUES ('TV');
+INSERT INTO amenity (name) VALUES ('Air Conditioning');
+INSERT INTO amenity (name) VALUES ('Fridge');
+INSERT INTO amenity (name) VALUES ('Free WiFi');
+INSERT INTO amenity (name) VALUES ('Room Service');
+INSERT INTO amenity (name) VALUES ('Parking');
+
+INSERT INTO damage (damage_name, description) VALUES ('Broken Window', 'Crack in the lower right corner');
+INSERT INTO damage (damage_name, description) VALUES ('Water Leak', 'Leak from the bathroom ceiling');
+INSERT INTO damage (damage_name, description) VALUES ('Carpet Stain', 'Red wine stain near the bed');
+INSERT INTO damage (damage_name, description) VALUES ('Broken Door', 'Door handle is broken');
+INSERT INTO damage (damage_name, description) VALUES ('Broken Light', 'Light bulb is broken');
+INSERT INTO damage (damage_name, description) VALUES ('Broken TV', 'TV screen is cracked');
+
+-- Rooms with both an amenity and a damage
+UPDATE room SET amenity_ID = 1, damage_ID = 1 WHERE room_number = 101;
+UPDATE room SET amenity_ID = 2, damage_ID = 2 WHERE room_number = 102;
+UPDATE room SET amenity_ID = 3, damage_ID = 3 WHERE room_number = 103;
+UPDATE room SET amenity_ID = 4, damage_ID = 1 WHERE room_number = 104;
+UPDATE room SET amenity_ID = 5, damage_ID = 2 WHERE room_number = 105;
+
+-- Rooms with only an amenity
+UPDATE room SET amenity_ID = 1, damage_ID = NULL WHERE room_number = 106;
+UPDATE room SET amenity_ID = 2, damage_ID = NULL WHERE room_number = 107;
+UPDATE room SET amenity_ID = 3, damage_ID = NULL WHERE room_number = 108;
+
+-- Rooms with only a damage
+UPDATE room SET amenity_ID = NULL, damage_ID = 1 WHERE room_number = 109;
+UPDATE room SET amenity_ID = NULL, damage_ID = 2 WHERE room_number = 110;
+UPDATE room SET amenity_ID = NULL, damage_ID = 3 WHERE room_number = 111;
+
+-- Rooms with neither an amenity nor a damage
+UPDATE room SET amenity_ID = NULL, damage_ID = NULL WHERE room_number = 112;
+UPDATE room SET amenity_ID = NULL, damage_ID = NULL WHERE room_number = 113;
+UPDATE room SET amenity_ID = NULL, damage_ID = NULL WHERE room_number = 114;
+UPDATE room SET amenity_ID = NULL, damage_ID = NULL WHERE room_number = 115;

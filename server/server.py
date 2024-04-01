@@ -45,24 +45,51 @@ def room():
     num_rooms = request.args.get('numRooms', None)
     # category = request.args.get('category', None)
     max_price = request.args.get('price', None)
+    amenity_ID = request.args.get('amenityID', None)
+    damage_ID = request.args.get('damageID', None)
+    amenity_name = request.args.get('amenityName', None)
+    damage_name = request.args.get('damageName', None)
+
     
 
     if request.method == 'GET':
         if room_number:
             query = """
-            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price
-            FROM room AS r NATURAL JOIN hotel as h
+            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number,
+           r.capacity, r.view, r.price, r.extendable, r.amenity_ID, r.damage_ID
+            FROM room AS r
+            JOIN hotel AS h ON r.hotel_id = h.hotel_ID
+
             """
             query += f"WHERE room_number = {room_number}"
         # query from user search
         elif start_date and end_date:
             query = """
-            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price, r.extendable 
-            FROM room AS r NATURAL JOIN hotel AS h 
-            WHERE NOT EXISTS (
-                SELECT * 
-                FROM room AS option
-                NATURAL LEFT JOIN booking """
+            SELECT 
+                h.hotel_chain_name, 
+                r.room_number, 
+                h.province, 
+                h.city, 
+                h.street_name, 
+                h.street_number, 
+                r.capacity, 
+                r.view, 
+                r.price, 
+                r.extendable,
+                r.amenity_ID, r.damage_ID,
+                a.name, 
+                d.description
+                FROM room AS r 
+                NATURAL JOIN hotel AS h 
+                LEFT JOIN amenity AS a ON r.amenity_ID = a.amenity_ID
+                LEFT JOIN damage AS d ON r.damage_ID = d.damage_ID
+                WHERE NOT EXISTS (
+                    SELECT * 
+                    FROM room AS option
+                    NATURAL LEFT JOIN booking
+
+                
+            """
             query += f"WHERE option.room_number = r.room_number AND NOT (booking.end_date < '{start_date}' OR booking.start_date > '{end_date}')) "
             if capacity:
                 query += f" AND r.capacity = {wanted_capacity}"
@@ -78,6 +105,20 @@ def room():
             #     query += f"AND h.category = {category} "
             if max_price:
                 query += f"AND r.price <= {max_price} "
+            if view:
+                query += f"AND r.view = '{view}' "
+            if extendable:
+                query += f"AND r.extendable = {extendable} "
+            if hotel_ID:
+                query += f"AND h.hotel_ID = {hotel_ID} "
+            if amenity_ID:
+                query += f"AND r.amenity_ID = {amenity_ID} "
+            if damage_ID:
+                query += f"AND r.damage_ID = {damage_ID} "
+            if amenity_name:
+                query += f"AND a.name = '{amenity_name}' "
+            if damage_name:
+                query += f"AND d.damage_name = '{damage_name}' "
         else:
             cursor.close()
             connection.close()
@@ -630,30 +671,52 @@ def hotels():
     return hotels
 
 @app.route("/view1", methods=['GET'])
-def view1():
+def available_rooms_per_area():
     connection = connect()
     cursor = connection.cursor()
-
-    # Join query to fetch all details including contact email and phone
     query = "SELECT * FROM rooms_per_area"
     cursor.execute(query)
     results = cursor.fetchall()
     cursor.close()
     connection.close()
-    return results
+    # Convert query results to a list of dictionaries to serialize them as JSON
+    results_list = [{"city": result[0], "province": result[1], "available_rooms": result[2]} for result in results]
+    return {"data": results_list}
 
 @app.route("/view2", methods=['GET'])
-def view2():
+def aggregated_capacity_per_hotel():
     connection = connect()
     cursor = connection.cursor()
-
-    # Join query to fetch all details including contact email and phone
-    query = "SELECT * FROM capacity_in_hilton_lac_leamy"
+    query = "SELECT * FROM Aggregated_Capacity_Per_Hotel"
     cursor.execute(query)
-    result = cursor.fetchall()
+    results = cursor.fetchall()
     cursor.close()
     connection.close()
-    return result
+    # Convert query results to a list of dictionaries to serialize them as JSON
+    results_list = [{"hotel_ID": result[0], "total_capacity": result[1]} for result in results]
+    return {"data": results_list}
 
+
+@app.route("/amenities", methods=['GET'])
+def amenities():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM amenity"
+    cursor.execute(query)
+    amenities = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return {'amenities': amenities}
+
+@app.route("/damages", methods=['GET'])
+def damages():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM damage"
+    cursor.execute(query)
+    damages = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return {'damages': damages}
 if __name__ == "__main__":
     app.run(port=7777, debug=True)

@@ -1,95 +1,3 @@
-// import React from "react";
-// import {
-//   TextField,
-//   Button,
-//   FormControl,
-//   InputLabel,
-//   Select,
-//   MenuItem,
-// } from "@mui/material";
-
-// function RoomFilters({
-//   filters,
-//   onFilterChange,
-//   onClearFilters,
-//   onApplyFilters,
-// }) {
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
-//     onFilterChange({ ...filters, [name]: value });
-//   };
-
-//   return (
-//     <div style={{ marginBottom: "20px" }}>
-//       {/* Include all necessary filters */}
-//       <TextField
-//         name="city"
-//         label="City"
-//         value={filters.city || ""}
-//         onChange={handleChange}
-//         style={{ marginRight: "10px" }}
-//       />
-//       <TextField
-//         name="province"
-//         label="Province"
-//         value={filters.province || ""}
-//         onChange={handleChange}
-//         style={{ marginRight: "10px" }}
-//       />
-//       {/* Add other filters similarly */}
-
-//       <FormControl style={{ minWidth: "120px", marginRight: "10px" }}>
-//         <InputLabel id="view-label">View</InputLabel>
-//         <Select
-//           labelId="view-label"
-//           name="view"
-//           value={filters.view || ""}
-//           onChange={handleChange}
-//         >
-//           <MenuItem value="sea">Sea</MenuItem>
-//           <MenuItem value="mountain">Mountain</MenuItem>
-//           <MenuItem value="street view">Street</MenuItem>
-//         </Select>
-//       </FormControl>
-//       <FormControl style={{ minWidth: "120px", marginRight: "10px" }}>
-//         <InputLabel id="capacity-label">Capacity</InputLabel>
-//         <Select
-//           labelId="capacity-label"
-//           name="capacity"
-//           value={filters.capacity || ""}
-//           onChange={handleChange}
-//         >
-//           <MenuItem value="1">1</MenuItem>
-//           <MenuItem value="2">2</MenuItem>
-//           <MenuItem value="3">3</MenuItem>
-//           <MenuItem value="4">4</MenuItem>
-//         </Select>
-//       </FormControl>
-//       <TextField
-//         name="price"
-//         label="Price"
-//         value={filters.price || ""}
-//         onChange={handleChange}
-//         style={{ marginRight: "10px" }}
-//       />
-
-//       <Button variant="contained" color="primary" onClick={onApplyFilters}>
-//         Apply Filters
-//       </Button>
-//       <Button
-//         variant="contained"
-//         color="secondary"
-//         onClick={onClearFilters}
-//         style={{ marginLeft: "10px" }}
-//       >
-//         Clear Filters
-//       </Button>
-//     </div>
-//   );
-// }
-
-// export default RoomFilters;
-
 import React from "react";
 import {
   TextField,
@@ -100,10 +8,22 @@ import {
   MenuItem,
 } from "@mui/material";
 
-function RoomFilters({ filters, onFilterChange, onClearFilters }) {
+function RoomFilters({
+  filters,
+  onFilterChange,
+  onClearFilters,
+  amenities,
+  damages,
+}) {
   const handleChange = (event) => {
     const { name, value } = event.target;
     onFilterChange({ ...filters, [name]: value });
+  };
+  const today = new Date().toISOString().slice(0, 10);
+  const initialFilters = {
+    startDate: filters.startDate || today,
+    endDate: filters.endDate || today,
+    // Include other initial filter states if needed
   };
 
   return (
@@ -156,25 +76,29 @@ function RoomFilters({ filters, onFilterChange, onClearFilters }) {
         type="number"
         value={filters.price || ""}
         onChange={handleChange}
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", marginBottom: "10px", marginTop: "10px" }}
       />
       {/* start date filter */}
       <TextField
         name="startDate"
         label="Start Date"
         type="date"
-        value={filters.startDate || ""}
+        required
+        value={initialFilters.startDate}
         onChange={handleChange}
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", marginBottom: "10px", marginTop: "10px" }}
+        InputLabelProps={{ shrink: true }}
       />
       {/* end date filter */}
       <TextField
         name="endDate"
         label="End Date"
         type="date"
-        value={filters.endDate || ""}
+        required
+        value={initialFilters.endDate}
         onChange={handleChange}
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", marginBottom: "10px", marginTop: "10px" }}
+        InputLabelProps={{ shrink: true }}
       />
       {/* number of rooms */}
       <TextField
@@ -183,7 +107,7 @@ function RoomFilters({ filters, onFilterChange, onClearFilters }) {
         type="number"
         value={filters.numRooms || ""}
         onChange={handleChange}
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", marginBottom: "10px", marginTop: "10px" }}
       />
       {/* hotel chain */}
       <TextField
@@ -222,15 +146,43 @@ function RoomFilters({ filters, onFilterChange, onClearFilters }) {
           <MenuItem value="5">5</MenuItem>
         </Select>
       </FormControl>
-      {/* number of rooms to book*/}
-      <TextField
-        name="numRooms"
-        label="Number of Rooms"
-        type="number"
-        value={filters.numRooms || ""}
-        onChange={handleChange}
-        style={{ marginRight: "10px" }}
-      />
+
+      <FormControl
+        style={{ minWidth: "200px", marginRight: "10px", marginTop: "10px" }}
+      >
+        <InputLabel id="amenity-label">Amenity</InputLabel>
+        <Select
+          labelId="amenity-label"
+          name="amenityName"
+          value={filters.amenityName || ""}
+          onChange={handleChange}
+        >
+          {amenities.map((amenity, index) => (
+            <MenuItem key={index} value={amenity[1]}>
+              {amenity[1]}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+
+      <FormControl
+        style={{ minWidth: "200px", marginRight: "10px", marginTop: "10px" }}
+      >
+        <InputLabel id="amenity-label">Damage</InputLabel>
+        <Select
+          labelId="amenity-label"
+          name="damageName"
+          value={filters.damageName || ""}
+          onChange={handleChange}
+        >
+          {damages.map((damages, index) => (
+            <MenuItem key={index} value={damages[1]}>
+              {damages[1]}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+
       <Button
         variant="contained"
         color="primary"

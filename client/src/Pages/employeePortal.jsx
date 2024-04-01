@@ -21,12 +21,26 @@ const EmployeePortal = () => {
           View Hotels
         </Button>
 
+        <Typography variant="h6">Hotels Data (Views)</Typography>
+        <Typography variant="body1">
+          View the different views implemented as data available.
+        </Typography>
+        <Button variant="contained" color="primary" href="/hotelData">
+          View Hotel Data
+        </Button>
+
         <Typography variant="h6">Rooms</Typography>
         <Typography variant="body1">
           View the different rooms available.
         </Typography>
         <Button variant="contained" color="primary" href="/rooms">
           View Rooms
+        </Button>
+
+        <Typography variant="h6">Create Rooms</Typography>
+        <Typography variant="body1">Create a new room for a hotel.</Typography>
+        <Button variant="contained" color="primary" href="/createRoom">
+          Create Room
         </Button>
 
         <Typography variant="h6">Customers</Typography>

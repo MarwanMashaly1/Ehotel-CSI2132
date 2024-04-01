@@ -1,19 +1,34 @@
 import React, { useState } from "react";
-import { Modal, Box, Button, TextField } from "@mui/material";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Button,
+  TextField,
+  Typography,
+  DialogTitle,
+} from "@mui/material";
 
 function BookingModal({ isOpen, onClose, room }) {
   // Adding state for all required customer fields
   const [customerDetails, setCustomerDetails] = useState({
     email: "",
+    password: "",
+    identification: "",
     firstName: "",
     lastName: "",
     streetNumber: "",
-    streetAddress: "",
+    streetName: "",
+    aptNumber: "",
     city: "",
     province: "",
     postalCode: "",
+    registerDate: new Date().toISOString().slice(0, 10),
+  });
 
-    // Add other fields as necessary
+  const [bookingDetails, setBookingDetails] = useState({
+    startDate: "",
+    endDate: "",
   });
 
   const handleInputChange = (e) => {
@@ -24,149 +39,233 @@ function BookingModal({ isOpen, onClose, room }) {
     }));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const bookingDetails = {
-      ...customerDetails,
-      startDate: event.target.startDate.value,
-      endDate: event.target.endDate.value,
-      roomNumber: room[1],
-    };
+  const handleBookingChange = (e) => {
+    const { name, value } = e.target;
+    setBookingDetails((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setCustomerDetails((prevState) => ({
+  //     ...prevState,
+  //     [name]: value,
+  //   }));
+  // };
+
+  const handleSubmit = async () => {
+    let method = "POST";
     try {
-      const response = await fetch("http://localhost:7777/bookRoom", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookingDetails),
+      // Attempt to create or update customer
+      let customerResponse = await fetch(
+        `http://localhost:7777/customer?email=${encodeURIComponent(
+          customerDetails.email
+        )}`,
+        {
+          method: "GET", // Check if customer exists
+        }
+      );
+
+      if (customerResponse.ok) {
+        method = "PUT"; // Customer exists, so we'll need to update
+      }
+
+      // Create or update customer
+      customerResponse = await fetch("http://localhost:7777/customer", {
+        method: method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(customerDetails),
       });
 
-      if (!response.ok) throw new Error("Booking failed");
-      alert("Booking successful!");
-      onClose();
+      if (!customerResponse.ok)
+        throw new Error("Failed to create/update customer");
+
+      // Create booking
+      const bookingResponse = await fetch("http://localhost:7777/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...bookingDetails,
+          roomNumber: room[1],
+          customerEmail: customerDetails.email,
+        }),
+      });
+
+      if (!bookingResponse.ok) throw new Error("Failed to create booking");
+
+      // Further actions upon successful booking...
+
+      onClose(); // Close modal
     } catch (error) {
-      console.error("Booking error:", error);
-      alert("Failed to make booking");
+      console.error("Error in creating booking:", error);
+      // Handle error (e.g., show an error message)
     }
   };
 
   return (
-    <Modal open={isOpen} onClose={onClose}>
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{
-          position: "absolute",
-          width: 400,
-          bgcolor: "background.paper",
-          border: "2px solid #000",
-          boxShadow: 24,
-          p: 4,
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          margin: "auto",
-        }}
-      >
-        <h2>Book Room {room[1]}</h2>
-        {/* Input fields for customer details */}
+    <Dialog open={isOpen} onClose={onClose} maxWidth="sm" fullWidth>
+      <DialogTitle>Create Booking</DialogTitle>
+      <DialogContent>
+        <Typography variant="h6" gutterBottom>
+          Customer Information
+        </Typography>
         <TextField
-          name="email"
+          autoFocus
+          margin="dense"
           label="Email"
           type="email"
           fullWidth
-          required
+          variant="outlined"
+          name="email"
           value={customerDetails.email}
           onChange={handleInputChange}
-          sx={{ mb: 2 }}
         />
         <TextField
-          name="firstName"
-          label="First Name"
+          margin="dense"
+          label="Password"
+          type="password"
           fullWidth
-          required
+          variant="outlined"
+          name="password"
+          value={customerDetails.password}
+          onChange={handleInputChange}
+        />
+        <TextField
+          margin="dense"
+          label="Identification"
+          type="text"
+          fullWidth
+          variant="outlined"
+          name="identification"
+          value={customerDetails.identification}
+          onChange={handleInputChange}
+        />
+        <TextField
+          margin="dense"
+          label="First Name"
+          type="text"
+          fullWidth
+          variant="outlined"
+          name="firstName"
           value={customerDetails.firstName}
           onChange={handleInputChange}
-          sx={{ mb: 2 }}
         />
         <TextField
-          name="lastName"
+          margin="dense"
           label="Last Name"
+          type="text"
           fullWidth
-          required
+          variant="outlined"
+          name="lastName"
           value={customerDetails.lastName}
           onChange={handleInputChange}
-          sx={{ mb: 2 }}
         />
         <TextField
-          name="streetNumber"
+          margin="dense"
           label="Street Number"
+          type="text"
           fullWidth
-          required
+          variant="outlined"
+          name="streetNumber"
           value={customerDetails.streetNumber}
           onChange={handleInputChange}
-          sx={{ mb: 2 }}
         />
         <TextField
-          name="streetAddress"
-          label="Street Address"
+          margin="dense"
+          label="Street Name"
+          type="text"
           fullWidth
-          required
-          value={customerDetails.streetAddress}
+          variant="outlined"
+          name="streetName"
+          value={customerDetails.streetName}
           onChange={handleInputChange}
-          sx={{ mb: 2 }}
         />
         <TextField
-          name="city"
-          label="City"
+          margin="dense"
+          label="Apt Number"
+          type="text"
           fullWidth
-          required
+          variant="outlined"
+          name="aptNumber"
+          value={customerDetails.aptNumber}
+          onChange={handleInputChange}
+        />
+        <TextField
+          margin="dense"
+          label="City"
+          type="text"
+          fullWidth
+          variant="outlined"
+          name="city"
           value={customerDetails.city}
           onChange={handleInputChange}
-          sx={{ mb: 2 }}
         />
         <TextField
-          name="province"
+          margin="dense"
           label="Province"
+          type="text"
           fullWidth
-          required
+          variant="outlined"
+          name="province"
           value={customerDetails.province}
           onChange={handleInputChange}
-          sx={{ mb: 2 }}
         />
         <TextField
-          name="postalCode"
+          margin="dense"
           label="Postal Code"
+          type="text"
           fullWidth
-          required
+          variant="outlined"
+          name="postalCode"
           value={customerDetails.postalCode}
           onChange={handleInputChange}
-          sx={{ mb: 2 }}
         />
-
-        {/* Add other fields as necessary */}
+        <Typography variant="h6" gutterBottom>
+          Booking Information
+        </Typography>
         <TextField
-          name="startDate"
+          margin="dense"
+          label="Room Number"
+          type="text"
+          fullWidth
+          variant="outlined"
+          name="roomNumber"
+          value={room[1]}
+          disabled
+          onChange={handleBookingChange}
+        />
+        <TextField
+          margin="dense"
           label="Start Date"
           type="date"
-          InputLabelProps={{ shrink: true }}
           fullWidth
-          required
-          sx={{ mb: 2 }}
+          variant="outlined"
+          name="startDate"
+          value={bookingDetails.startDate}
+          onChange={handleBookingChange}
+          InputLabelProps={{ shrink: true }}
         />
         <TextField
-          name="endDate"
+          margin="dense"
           label="End Date"
           type="date"
-          InputLabelProps={{ shrink: true }}
           fullWidth
-          required
-          sx={{ mb: 2 }}
+          variant="outlined"
+          name="endDate"
+          value={bookingDetails.endDate}
+          onChange={handleBookingChange}
+          InputLabelProps={{ shrink: true }}
         />
-        <Button type="submit">Submit Booking</Button>
-      </Box>
-    </Modal>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={handleSubmit} color="primary">
+          Confirm Booking
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 
