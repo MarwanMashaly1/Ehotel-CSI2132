@@ -52,3 +52,32 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER trigger_ensure_one_manager
 BEFORE INSERT OR UPDATE ON manages
 FOR EACH ROW EXECUTE FUNCTION ensure_one_manager_per_hotel();
+
+-- Create or replace the trigger
+DROP TRIGGER IF EXISTS update_num_rooms_trigger ON room;
+
+CREATE OR REPLACE FUNCTION update_num_rooms()
+RETURNS TRIGGER AS
+$$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        -- Increment num_rooms when a room is inserted
+        UPDATE hotel
+        SET num_rooms = num_rooms + 1
+        WHERE hotel_ID = NEW.hotel_ID;
+    ELSIF TG_OP = 'DELETE' THEN
+        -- Decrement num_rooms when a room is deleted
+        UPDATE hotel
+        SET num_rooms = num_rooms - 1
+        WHERE hotel_ID = OLD.hotel_ID;
+    END IF;
+    RETURN NULL;
+END;
+$$
+LANGUAGE plpgsql;
+
+-- Attach the trigger to the hotel_rooms table
+CREATE OR REPLACE TRIGGER update_num_rooms_trigger
+AFTER INSERT OR DELETE ON room
+FOR EACH ROW
+EXECUTE FUNCTION update_num_rooms();
