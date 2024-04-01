@@ -5,9 +5,65 @@ import RoomFilters from "../components/roomFilter";
 import RoomCard from "../components/roomCard";
 
 function Rooms() {
-  const [filters, setFilters] = useState({});
+  const today = new Date().toISOString().slice(0, 10);
+  const [amenities, setAmenities] = useState([]);
+  const [damages, setDamages] = useState([]);
+
+  const [filters, setFilters] = useState({
+    city: "",
+    province: "",
+    view: "",
+    capacity: "",
+    price: "",
+    startDate: today,
+    endDate: today,
+    numRooms: "",
+    hotelChain: "",
+    extendable: "",
+    rating: "",
+    amenityName: "",
+    damageName: "",
+  });
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const fetchAmenities = async () => {
+    try {
+      const response = await fetch(`http://localhost:7777/amenities`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setAmenities(data.amenities);
+      } else {
+        console.error("Failed to fetch amenities");
+      }
+    } catch (error) {
+      console.error("Error fetching amenities:", error);
+    }
+  };
+
+  const fetchDamages = async () => {
+    try {
+      const response = await fetch(`http://localhost:7777/damages`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setDamages(data.damages);
+      } else {
+        console.error("Failed to fetch amenities");
+      }
+    } catch (error) {
+      console.error("Error fetching amenities:", error);
+    }
+  };
 
   const fetchRooms = async () => {
     setLoading(true);
@@ -19,7 +75,6 @@ function Rooms() {
           method: "GET",
           headers: {
             "Content-Type": "application/json", // assuming your API returns JSON
-            // Add any other headers needed for authentication or other purposes
           },
         }
       );
@@ -37,15 +92,17 @@ function Rooms() {
   };
 
   useEffect(() => {
-    fetchRooms(); // Fetch rooms when the component mounts and when filters change
+    fetchAmenities();
+    fetchDamages();
+    fetchRooms();
   }, [filters]);
 
   const handleFilterChange = (newFilters) => {
-    setFilters(newFilters); // This will trigger the useEffect and thus re-fetch the rooms
+    setFilters(newFilters);
   };
 
-  const handleClearFilters = () => {
-    setFilters({});
+  const handleClearFilters = (newFilters) => {
+    setFilters((prevFilters) => ({ ...prevFilters, ...newFilters }));
   };
 
   return (
@@ -57,6 +114,8 @@ function Rooms() {
         filters={filters}
         onFilterChange={handleFilterChange}
         onClearFilters={handleClearFilters}
+        amenities={amenities}
+        damages={damages}
       />
       {loading ? (
         <Typography>Loading...</Typography>

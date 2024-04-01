@@ -5,7 +5,7 @@ import psycopg2
 # Database info (replace with your database details)
 DATABASE="ehotel"
 USER="postgres"
-PASSWORD=""
+PASSWORD="marwan2000"
 HOST="localhost"
 PORT="5432"
 
@@ -45,24 +45,51 @@ def room():
     num_rooms = request.args.get('numRooms', None)
     # category = request.args.get('category', None)
     max_price = request.args.get('price', None)
+    amenity_ID = request.args.get('amenityID', None)
+    damage_ID = request.args.get('damageID', None)
+    amenity_name = request.args.get('amenityName', None)
+    damage_name = request.args.get('damageName', None)
+
     
 
     if request.method == 'GET':
         if room_number:
             query = """
-            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price
-            FROM room AS r NATURAL JOIN hotel as h
+            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number,
+           r.capacity, r.view, r.price, r.extendable, r.amenity_ID, r.damage_ID
+            FROM room AS r
+            JOIN hotel AS h ON r.hotel_id = h.hotel_ID
+
             """
             query += f"WHERE room_number = {room_number}"
         # query from user search
         elif start_date and end_date:
             query = """
-            SELECT h.hotel_chain_name, r.room_number, h.province, h.city, h.street_name, h.street_number, r.capacity, r.view, r.price, r.extendable 
-            FROM room AS r NATURAL JOIN hotel AS h 
-            WHERE NOT EXISTS (
-                SELECT * 
-                FROM room AS option
-                NATURAL LEFT JOIN booking """
+            SELECT 
+                h.hotel_chain_name, 
+                r.room_number, 
+                h.province, 
+                h.city, 
+                h.street_name, 
+                h.street_number, 
+                r.capacity, 
+                r.view, 
+                r.price, 
+                r.extendable,
+                r.amenity_ID, r.damage_ID,
+                a.name, 
+                d.description
+                FROM room AS r 
+                NATURAL JOIN hotel AS h 
+                LEFT JOIN amenity AS a ON r.amenity_ID = a.amenity_ID
+                LEFT JOIN damage AS d ON r.damage_ID = d.damage_ID
+                WHERE NOT EXISTS (
+                    SELECT * 
+                    FROM room AS option
+                    NATURAL LEFT JOIN booking
+
+                
+            """
             query += f"WHERE option.room_number = r.room_number AND NOT (booking.end_date < '{start_date}' OR booking.start_date > '{end_date}')) "
             if capacity:
                 query += f" AND r.capacity = {wanted_capacity}"
@@ -78,6 +105,20 @@ def room():
             #     query += f"AND h.category = {category} "
             if max_price:
                 query += f"AND r.price <= {max_price} "
+            if view:
+                query += f"AND r.view = '{view}' "
+            if extendable:
+                query += f"AND r.extendable = {extendable} "
+            if hotel_ID:
+                query += f"AND h.hotel_ID = {hotel_ID} "
+            if amenity_ID:
+                query += f"AND r.amenity_ID = {amenity_ID} "
+            if damage_ID:
+                query += f"AND r.damage_ID = {damage_ID} "
+            if amenity_name:
+                query += f"AND a.name = '{amenity_name}' "
+            if damage_name:
+                query += f"AND d.damage_name = '{damage_name}' "
         else:
             cursor.close()
             connection.close()
@@ -134,6 +175,7 @@ def customer():
 
     email = request.args.get('email', None)
     password = request.args.get('password', None)
+    identification = request.args.get('identification', None)
     first_name = request.args.get('firstName', None)
     last_name = request.args.get('lastName', None)
     street_number = request.args.get('streetNumber', None)
@@ -157,17 +199,57 @@ def customer():
             connection.close()
             return 'Missing email'
     elif request.method == 'POST':
-        if email and password and first_name and last_name and street_number and street_name and apt_number and city and province and postal_code and register_date:
-            query = f"INSERT INTO customer VALUES ('{email}','{password}','{first_name}','{last_name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}','{register_date}')"
+        data = request.get_json()
+        email = data.get('email', None)
+        password = data.get('password', None)
+        identification = data.get('identification', None)
+        first_name = data.get('firstName', None)
+        last_name = data.get('lastName', None)
+        street_number = data.get('streetNumber', None)
+        street_name = data.get('streetName', None)
+        apt_number = data.get('aptNumber', None)
+        city = data.get('city', None)
+        province = data.get('province', None)
+        postal_code = data.get('postalCode', None) 
+        register_date = data.get('registerDate', None)
+
+
+
+        if email and password and identification and first_name and last_name and street_number and street_name and apt_number and city and province and postal_code and register_date:
+            # check if email already exists
+            query = f"SELECT * FROM customer WHERE email = '{email}'"
+            cursor.execute(query)
+            customer = cursor.fetchall()
+            if customer:
+                cursor.close()
+                connection.close()
+                # return a 409 status code and a message
+                return 'Email already exists'
+            query = f"INSERT INTO customer VALUES ('{email}','{password}','{identification}','{first_name}','{last_name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}','{register_date}')"
         else:
             cursor.close()
             connection.close()
             return 'Missing at least one of email, password, firstName, lastName, streetNumber, streetName, aptNumber, city, province, postalCode, registerDate'
     elif request.method == 'PUT':
+        data = request.get_json()
+        email = data.get('email', None)
+        password = data.get('password', None)
+        identification = data.get('identification', None)
+        first_name = data.get('firstName', None)
+        last_name = data.get('lastName', None)
+        street_number = data.get('streetNumber', None)
+        street_name = data.get('streetName', None)
+        apt_number = data.get('aptNumber', None)
+        city = data.get('city', None)
+        province = data.get('province', None)
+        postal_code = data.get('postalCode', None)
+        register_date = data.get('registerDate', None)
         if email:
             query = "UPDATE customer SET "
             if password:
                 query += f"password = '{password}', "
+            if identification:
+                query += f"identification = '{identification}', "
             if first_name:
                 query += f"first_name = '{first_name}', "
             if last_name:
@@ -205,28 +287,40 @@ def customer():
     connection.close()
     return 'OK'
 
+#  route for all customers
+@app.route("/customers", methods=['GET'])
+def customers():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM customer"
+    cursor.execute(query)
+    customers = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return customers
+
+
 # route with parameters should look like "/employee?sin=101-010-101"
 @app.route("/employee", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def employee():
 
     connection = connect()
     cursor = connection.cursor()
-    
-    sin = request.args.get('sin', None)
-    password = request.args.get('password', None)
-    first_name = request.args.get('firstName', None)
-    last_name = request.args.get('lastName', None)
-    street_number = request.args.get('streetNumber', None)
-    street_name = request.args.get('streetName', None)
-    apt_number = request.args.get('aptNumber', None)
-    city = request.args.get('city', None)
-    province = request.args.get('province', None)
-    postal_code = request.args.get('postalCode', None)
-    rating  = request.args.get('rating', None)
-    emp_role = request.args.get('empRole', None)
-    hotel_ID = request.args.get('hotelID', None)
 
     if request.method == 'GET':
+        sin = request.args.get('sin', None)
+        password = request.args.get('password', None)
+        first_name = request.args.get('firstName', None)
+        last_name = request.args.get('lastName', None)
+        street_number = request.args.get('streetNumber', None)
+        street_name = request.args.get('streetName', None)
+        apt_number = request.args.get('aptNumber', None)
+        city = request.args.get('city', None)
+        province = request.args.get('province', None)
+        postal_code = request.args.get('postalCode', None)
+        rating  = request.args.get('rating', None)
+        emp_role = request.args.get('empRole', None)
+        hotel_ID = request.args.get('hotelID', None)
         if sin:
             query = f"SELECT * FROM employee WHERE sin = '{sin}'"
             cursor.execute(query)
@@ -239,6 +333,21 @@ def employee():
             connection.close()
             return 'Missing sin'
     elif request.method == 'POST':
+        data = request.get_json()
+        sin = data.get('sin', None)
+        password = data.get('password', None)
+        first_name = data.get('firstName', None)
+        last_name = data.get('lastName', None)
+        street_number = data.get('streetNumber', None)
+        street_name = data.get('streetName', None)
+        apt_number = data.get('aptNumber', None)
+        city = data.get('city', None)
+        province = data.get('province', None)
+        postal_code = data.get('postalCode', None)
+        rating = data.get('rating', None)
+        emp_role = data.get('empRole', None)
+        hotel_ID = data.get('hotelID', None)
+        print(sin, password, first_name, last_name, street_number, street_name, apt_number, city, province, postal_code, rating, emp_role, hotel_ID)
         if sin and password and first_name and last_name and street_number and street_name and apt_number and city and province and postal_code and rating and emp_role and hotel_ID:
             query = f"INSERT INTO employee VALUES ('{sin}','{password}','{first_name}','{last_name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}',{rating},'{emp_role}','{hotel_ID}')"
             if emp_role == "manager":
@@ -305,6 +414,18 @@ def employee():
     connection.close()
     return 'OK'
 
+# route for all employees
+@app.route("/employees", methods=['GET'])
+def employees():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM employee"
+    cursor.execute(query)
+    employees = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return employees
+
 # route with parameters should look like "/hotel?hotelID=1"
 @app.route("/hotel", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def hotel():
@@ -337,6 +458,19 @@ def hotel():
             connection.close()
             return 'Missing hotelID'
     elif request.method == 'POST':
+        data = request.get_json()
+        hotel_ID = data.get('hotelID', None)
+        name = data.get('name', None)
+        street_number = data.get('streetNumber', None)
+        street_name = data.get('streetName', None)
+        apt_number = data.get('aptNumber', None)
+        city = data.get('city', None)
+        province = data.get('province', None)
+        postal_code = data.get('postalCode', None)
+        rating = data.get('rating', None)
+        num_rooms = data.get('numRooms', None)
+        hotel_chain_name = data.get('hotelChainName', None)
+
         if hotel_ID and name and street_number and street_name and apt_number and city and province and postal_code and rating and num_rooms and hotel_chain_name:
             query = f"INSERT INTO hotel VALUES ({hotel_ID},'{name}','{street_number}','{street_name}','{apt_number}','{city}','{province}','{postal_code}',{rating},{num_rooms},null,null,'{hotel_chain_name}')"
         else:
@@ -421,6 +555,12 @@ def booking():
             connection.close()
             return 'Missing customerEmail'
     elif request.method == 'POST':
+        data = request.get_json()
+        room_number = data.get('roomNumber', None)
+        customer_email = data.get('customerEmail', None)
+        start_date = data.get('startDate', None)
+        end_date = data.get('endDate', None)
+
         if room_number and customer_email and start_date and end_date:
             query = f"SELECT * FROM room NATURAL LEFT JOIN booking WHERE (room_number = {room_number} AND (booking.end_date < '{start_date}' OR booking.start_date > '{end_date}')) "
             cursor.execute(query)
@@ -442,6 +582,18 @@ def booking():
             cursor.close()
             connection.close()
             return 'Missing at least one of roomNumber, customerEmail, startDate, startTime, endDate, endTime'
+
+@app.route("/bookings", methods=['GET','POST'])
+def bookings():
+    connection = connect()
+    cursor = connection.cursor()
+
+    query = "SELECT * FROM booking"
+    cursor.execute(query)
+    bookings = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return bookings
 
 @app.route("/renting", methods=['GET','POST'])
 def renting():
@@ -466,6 +618,11 @@ def renting():
         connection.close()
         return rentings
     if request.method == 'POST':
+        data = request.get_json()
+        booking_ID = data.get('bookingID', None)
+        employee_sin = data.get('employeeSin', None)
+
+
         if booking_ID and employee_sin:
             query = f"INSERT INTO renting VALUES (DEFAULT,{booking_ID},'{employee_sin}')"
             cursor.execute(query)
@@ -480,6 +637,19 @@ def renting():
             cursor.close()
             connection.close()
             return 'Missing bookingID OR employeeSIN'
+        
+# get all rentals
+        
+@app.route("/rentings", methods=['GET'])
+def rentings():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM renting"
+    cursor.execute(query)
+    rentings = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return rentings
 
 # hotels route
 @app.route("/hotels", methods=['GET'])
@@ -501,30 +671,52 @@ def hotels():
     return hotels
 
 @app.route("/view1", methods=['GET'])
-def view1():
+def available_rooms_per_area():
     connection = connect()
     cursor = connection.cursor()
-
-    # Join query to fetch all details including contact email and phone
     query = "SELECT * FROM rooms_per_area"
     cursor.execute(query)
     results = cursor.fetchall()
     cursor.close()
     connection.close()
-    return results
+    # Convert query results to a list of dictionaries to serialize them as JSON
+    results_list = [{"city": result[0], "province": result[1], "available_rooms": result[2]} for result in results]
+    return {"data": results_list}
 
 @app.route("/view2", methods=['GET'])
-def view2():
+def aggregated_capacity_per_hotel():
     connection = connect()
     cursor = connection.cursor()
-
-    # Join query to fetch all details including contact email and phone
-    query = "SELECT * FROM capacity_in_hilton_lac_leamy"
+    query = "SELECT * FROM Aggregated_Capacity_Per_Hotel"
     cursor.execute(query)
-    result = cursor.fetchall()
+    results = cursor.fetchall()
     cursor.close()
     connection.close()
-    return result
+    # Convert query results to a list of dictionaries to serialize them as JSON
+    results_list = [{"hotel_ID": result[0], "total_capacity": result[1]} for result in results]
+    return {"data": results_list}
 
+
+@app.route("/amenities", methods=['GET'])
+def amenities():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM amenity"
+    cursor.execute(query)
+    amenities = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return {'amenities': amenities}
+
+@app.route("/damages", methods=['GET'])
+def damages():
+    connection = connect()
+    cursor = connection.cursor()
+    query = "SELECT * FROM damage"
+    cursor.execute(query)
+    damages = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return {'damages': damages}
 if __name__ == "__main__":
     app.run(port=7777, debug=True)

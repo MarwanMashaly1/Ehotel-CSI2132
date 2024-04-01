@@ -5,8 +5,7 @@ FROM hotel
 GROUP BY province, city;
 
 -- View 2
-CREATE OR REPLACE VIEW capacity_in_hilton_lac_leamy AS
-SELECT name, SUM(capacity)
-FROM (SELECT name, hotel_ID FROM hotel WHERE name = 'Hilton Lac Leamy')
-NATURAL JOIN room
-GROUP BY name;
+CREATE VIEW Aggregated_Capacity_Per_Hotel AS
+SELECT hotel_ID, SUM(capacity) AS total_capacity
+FROM room
+GROUP BY hotel_ID;
