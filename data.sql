@@ -585,8 +585,8 @@ INSERT INTO hotel VALUES
 		'Gatineau',
 		'Quebec',
 		'J8Y6X4',
-		4.5,
-		0,
+		5,
+		349,
 		6,
 		6,
 		'Hilton Hotels & Resorts'
@@ -600,8 +600,8 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1R 0C7',
-		4.3,
-		0,
+		4,
+		175,
 		7,
 		7,
 		'Hilton Hotels & Resorts'
@@ -615,8 +615,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H3A0B1',
-		4.2,
-		0,
+		3,
+		221,
 		8,
 		8,
 		'Hilton Hotels & Resorts'
@@ -630,8 +630,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H5B1E5',
-		4.2,
-		0,
+		4,
+		595,
 		9,
 		9,
 		'Hilton Hotels & Resorts'
@@ -645,8 +645,8 @@ INSERT INTO hotel VALUES
 		'Markham',
 		'Ontario',
 		'L6G1A5',
-		4.2,
-		0,
+		4,
+		502,
 		10,
 		10,
 		'Hilton Hotels & Resorts'
@@ -660,8 +660,8 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5G1R3',
-		4.1,
-		0,
+		4,
+		490,
 		11,
 		11,
 		'Hilton Hotels & Resorts'
@@ -675,8 +675,8 @@ INSERT INTO hotel VALUES
 		'Niagara Falls',
 		'Ontario',
 		'L2G3V9',
-		3.9,
-		0,
+		2,
+		1083,
 		12,
 		12,
 		'Hilton Hotels & Resorts'
@@ -690,8 +690,8 @@ INSERT INTO hotel VALUES
 		'Mont-Tremblant',
 		'Quebec',
 		'J8E1E1',
-		4.3,
-		0,
+		4,
+		101,
 		13,
 		13,
 		'Hilton Hotels & Resorts'
@@ -707,8 +707,8 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1J7T4',
-		3.8,
-		0,
+		3,
+		256,
 		14,
 		14,
 		'Holiday Inn'
@@ -722,8 +722,8 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1R5A7',
-		4.0,
-		0,
+		4,
+		177,
 		15,
 		15,
 		'Holiday Inn'
@@ -737,8 +737,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H2Z0B4',
-		4.1,
-		0,
+		3,
+		221,
 		16,
 		16,
 		'Holiday Inn'
@@ -752,8 +752,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H8T1A6',
-		3.8,
-		0,
+		3,
+		154,
 		17,
 		17,
 		'Holiday Inn'
@@ -767,8 +767,8 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5B2E9',
-		3.9,
-		0,
+		3,
+		513,
 		18,
 		18,
 		'Holiday Inn'
@@ -782,8 +782,8 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5C2T9',
-		4.1,
-		0,
+		3,
+		195,
 		19,
 		19,
 		'Holiday Inn'
@@ -797,8 +797,8 @@ INSERT INTO hotel VALUES
 		'Niagara Falls',
 		'Ontario',
 		'L2G2J3',
-		3.7,
-		0,
+		3,
+		122,
 		20,
 		20,
 		'Holiday Inn'
@@ -812,8 +812,8 @@ INSERT INTO hotel VALUES
 		'Mont-Tremblant',
 		'Quebec',
 		'J8E1C9',
-		4.2,
-		0,
+		4,
+		141,
 		21,
 		21,
 		'Holiday Inn'
@@ -829,8 +829,8 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1P5G2',
-		4.3,
-		0,
+		4,
+		236,
 		22,
 		22,
 		'Sheraton Hotels and Resorts'
@@ -844,8 +844,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H9P1B7',
-		4.1,
-		0,
+		3,
+		465,
 		23,
 		23,
 		'Sheraton Hotels and Resorts'
@@ -859,8 +859,8 @@ INSERT INTO hotel VALUES
 		'Laval',
 		'Quebec',
 		'H7T1X5',
-		4.3,
-		0,
+		4,
+		238,
 		24,
 		24,
 		'Sheraton Hotels and Resorts'
@@ -874,8 +874,8 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5H2M9',
-		4.3,
-		0,
+		5,
+		1472,
 		25,
 		25,
 		'Sheraton Hotels and Resorts'
@@ -889,8 +889,8 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M9W1J5',
-		4.2,
-		0,
+		4,
+		249,
 		26,
 		26,
 		'Sheraton Hotels and Resorts'
@@ -904,8 +904,8 @@ INSERT INTO hotel VALUES
 		'Richmond Hill',
 		'Ontario',
 		'L4B1B2',
-		4.2,
-		0,
+		4,
+		311,
 		27,
 		27,
 		'Sheraton Hotels and Resorts'
@@ -919,8 +919,8 @@ INSERT INTO hotel VALUES
 		'Niagara Falls',
 		'Ontario',
 		'L2G3K7',
-		4.1,
-		0,
+		3,
+		669,
 		28,
 		28,
 		'Sheraton Hotels and Resorts'
@@ -934,8 +934,8 @@ INSERT INTO hotel VALUES
 		'Thorold',
 		'Ontario',
 		'L2V4Y6',
-		4.1,
-		0,
+		4,
+		124,
 		29,
 		29,
 		'Sheraton Hotels and Resorts'
@@ -951,8 +951,8 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1P5R7',
-		4.2,
-		0,
+		4,
+		489,
 		30,
 		30,
 		'Marriott Hotels & Resorts'
@@ -966,8 +966,8 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1K4S3',
-		4.4,
-		0,
+		4,
+		393,
 		31,
 		31,
 		'Marriott Hotels & Resorts'
@@ -981,8 +981,8 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K1R5T9',
-		4.3,
-		0,
+		5,
+		410,
 		32,
 		32,
 		'Marriott Hotels & Resorts'
@@ -996,8 +996,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H3B4C9',
-		4.4,
-		0,
+		4,
+		596,
 		33,
 		33,
 		'Marriott Hotels & Resorts'
@@ -1011,8 +1011,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H2Z0A6',
-		4.4,
-		0,
+		3,
+		210,
 		34,
 		34,
 		'Marriott Hotels & Resorts'
@@ -1026,8 +1026,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'H2L4C6',
-		4.1,
-		0,
+		4,
+		154,
 		35,
 		35,
 		'Marriott Hotels & Resorts'
@@ -1041,8 +1041,8 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5G2L2',
-		4.4,
-		0,
+		3,
+		461,
 		36,
 		36,
 		'Marriott Hotels & Resorts'
@@ -1056,8 +1056,8 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M5V1J4',
-		4.4,
-		0,
+		4,
+		344,
 		37,
 		37,
 		'Marriott Hotels & Resorts'
@@ -1073,8 +1073,8 @@ INSERT INTO hotel VALUES
 		'Ottawa',
 		'Ontario',
 		'K2E0B7',
-		4.6,
-		0,
+		5,
+		201,
 		38,
 		38,
 		'Sandman Hotel Group'
@@ -1088,8 +1088,8 @@ INSERT INTO hotel VALUES
 		'Montreal',
 		'Quebec',
 		'J4K2T1',
-		3.9,
-		0,
+		2,
+		214,
 		39,
 		39,
 		'Sandman Hotel Group'
@@ -1103,8 +1103,8 @@ INSERT INTO hotel VALUES
 		'Toronto',
 		'Ontario',
 		'M9W 7K7',
-		4.2,
-		0,
+		5,
+		256,
 		40,
 		40,
 		'Sandman Hotel Group'
@@ -1118,8 +1118,8 @@ INSERT INTO hotel VALUES
 		'Hamilton',
 		'Quebec',
 		'L8E0G2',
-		4.2,
-		0,
+		1,
+		208,
 		41,
 		41,
 		'Sandman Hotel Group'
@@ -1133,8 +1133,8 @@ INSERT INTO hotel VALUES
 		'Vancouver',
 		'British Columbia',
 		'V6B4P4',
-		4.0,
-		0,
+		2,
+		302,
 		42,
 		42,
 		'Sandman Hotel Group'
@@ -1148,8 +1148,8 @@ INSERT INTO hotel VALUES
 		'Richmond',
 		'British Columbia',
 		'V6X3K4',
-		3.8,
-		0,
+		4,
+		171,
 		43,
 		43,
 		'Sandman Hotel Group'
@@ -1163,8 +1163,8 @@ INSERT INTO hotel VALUES
 		'Victoria',
 		'British Columbia',
 		'V8T4M5',
-		4.1,
-		0,
+		4,
+		100,
 		44,
 		4,
 		'Sandman Hotel Group'
@@ -1178,8 +1178,8 @@ INSERT INTO hotel VALUES
 		'Calgary',
 		'Alberta',
 		'T2P3J3',
-		3.8,
-		0,
+		3,
+		300,
 		45,
 		45,
 		'Sandman Hotel Group'
@@ -1192,7 +1192,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1202,7 +1202,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1212,7 +1212,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1222,7 +1222,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1232,7 +1232,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1242,7 +1242,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1252,7 +1252,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1262,7 +1262,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1272,7 +1272,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1282,7 +1282,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1292,7 +1292,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1302,7 +1302,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1312,7 +1312,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1322,7 +1322,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1332,7 +1332,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1342,7 +1342,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1352,7 +1352,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1362,7 +1362,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1372,7 +1372,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1382,7 +1382,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1392,7 +1392,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1402,7 +1402,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1412,7 +1412,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1422,7 +1422,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1432,7 +1432,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1442,7 +1442,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1452,7 +1452,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1462,7 +1462,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1472,7 +1472,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1482,7 +1482,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1492,7 +1492,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1502,7 +1502,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1512,7 +1512,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1522,7 +1522,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1532,7 +1532,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1542,7 +1542,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1552,7 +1552,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1562,7 +1562,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1572,7 +1572,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1582,7 +1582,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1592,7 +1592,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1602,7 +1602,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1612,7 +1612,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1622,7 +1622,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1632,7 +1632,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1642,7 +1642,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1652,7 +1652,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1662,7 +1662,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1672,7 +1672,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1682,7 +1682,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1692,7 +1692,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1702,7 +1702,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1712,7 +1712,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1722,7 +1722,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1732,7 +1732,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1742,7 +1742,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1752,7 +1752,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1762,7 +1762,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1772,7 +1772,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1782,7 +1782,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1792,7 +1792,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1802,7 +1802,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1812,7 +1812,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1822,7 +1822,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1832,7 +1832,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1842,7 +1842,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1852,7 +1852,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1862,7 +1862,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1872,7 +1872,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1882,7 +1882,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1892,7 +1892,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1902,7 +1902,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1912,7 +1912,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1922,7 +1922,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1932,7 +1932,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1942,7 +1942,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		16
@@ -1952,7 +1952,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		16
@@ -3192,3 +3192,39 @@ INSERT INTO room VALUES
 INSERT INTO customer VALUES ('john@doe.com', 'password', 'John', 'Doe', '5', 'Road rd.', '1', 'Ottawa', 'Ontario', 'K2J0K2','2023-02-03');
 INSERT INTO employee VALUES ('111-111-111', 'pass', 'Jane', 'Doe', '11', 'Pavement circle', '2', 'Ottawa', 'Ontario', 'K2J0J8', 5.0, 'manager', 40);
 INSERT INTO manages VALUES ('111-111-111', 40);
+INSERT INTO amenity (name) VALUES ('TV');
+INSERT INTO amenity (name) VALUES ('Air Conditioning');
+INSERT INTO amenity (name) VALUES ('Fridge');
+INSERT INTO amenity (name) VALUES ('Free WiFi');
+INSERT INTO amenity (name) VALUES ('Room Service');
+INSERT INTO amenity (name) VALUES ('Parking');
+
+INSERT INTO damage (damage_name, description) VALUES ('Broken Window', 'Crack in the lower right corner');
+INSERT INTO damage (damage_name, description) VALUES ('Water Leak', 'Leak from the bathroom ceiling');
+INSERT INTO damage (damage_name, description) VALUES ('Carpet Stain', 'Red wine stain near the bed');
+INSERT INTO damage (damage_name, description) VALUES ('Broken Door', 'Door handle is broken');
+INSERT INTO damage (damage_name, description) VALUES ('Broken Light', 'Light bulb is broken');
+INSERT INTO damage (damage_name, description) VALUES ('Broken TV', 'TV screen is cracked');
+
+-- Rooms with both an amenity and a damage
+UPDATE room SET amenity_ID = 1, damage_ID = 1 WHERE room_number = 101;
+UPDATE room SET amenity_ID = 2, damage_ID = 2 WHERE room_number = 102;
+UPDATE room SET amenity_ID = 3, damage_ID = 3 WHERE room_number = 103;
+UPDATE room SET amenity_ID = 4, damage_ID = 1 WHERE room_number = 104;
+UPDATE room SET amenity_ID = 5, damage_ID = 2 WHERE room_number = 105;
+
+-- Rooms with only an amenity
+UPDATE room SET amenity_ID = 1, damage_ID = NULL WHERE room_number = 106;
+UPDATE room SET amenity_ID = 2, damage_ID = NULL WHERE room_number = 107;
+UPDATE room SET amenity_ID = 3, damage_ID = NULL WHERE room_number = 108;
+
+-- Rooms with only a damage
+UPDATE room SET amenity_ID = NULL, damage_ID = 1 WHERE room_number = 109;
+UPDATE room SET amenity_ID = NULL, damage_ID = 2 WHERE room_number = 110;
+UPDATE room SET amenity_ID = NULL, damage_ID = 3 WHERE room_number = 111;
+
+-- Rooms with neither an amenity nor a damage
+UPDATE room SET amenity_ID = NULL, damage_ID = NULL WHERE room_number = 112;
+UPDATE room SET amenity_ID = NULL, damage_ID = NULL WHERE room_number = 113;
+UPDATE room SET amenity_ID = NULL, damage_ID = NULL WHERE room_number = 114;
+UPDATE room SET amenity_ID = NULL, damage_ID = NULL WHERE room_number = 115;

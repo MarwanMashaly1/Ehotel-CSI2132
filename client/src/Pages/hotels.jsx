@@ -1,20 +1,57 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Grid } from "@mui/material";
+import { Card, CardContent, Typography, Grid, Button } from "@mui/material";
+import HotelModal from "../components/hotelModal"; // Import the modal component
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedHotel, setSelectedHotel] = useState(null);
+
+  const fetchHotels = async () => {
+    try {
+      const response = await fetch("http://localhost:7777/hotels");
+      const data = await response.json();
+      setHotels(data);
+    } catch (error) {
+      console.error("Error fetching hotels:", error);
+    }
+  };
+
+  // Function to handle opening the modal for adding
+  const handleAddHotel = () => {
+    setSelectedHotel(null);
+    setModalOpen(true);
+  };
+
+  // Function to handle opening the modal for editing
+  const handleEditHotel = (hotel) => {
+    setSelectedHotel(hotel);
+    setModalOpen(true);
+  };
+
+  // Function to save hotel details (add or edit)
+  const handleSaveHotel = async (hotelDetails) => {
+    const method = selectedHotel ? "PUT" : "POST";
+    const url = `http://localhost:7777/hotel${
+      selectedHotel ? `?hotelID=${selectedHotel.hotel_ID}` : ""
+    }`;
+
+    try {
+      await fetch(url, {
+        method: method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(hotelDetails),
+      });
+      // After saving, fetch the hotels list again to reflect changes
+      fetchHotels();
+    } catch (error) {
+      console.error("Failed to save hotel:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchHotels = async () => {
-      try {
-        const response = await fetch("http://localhost:7777/hotels");
-        const data = await response.json();
-        setHotels(data);
-      } catch (error) {
-        console.error("Error fetching hotels:", error);
-      }
-    };
-
     fetchHotels();
   }, []);
 
@@ -23,6 +60,13 @@ const Hotels = () => {
       <Typography variant="h4" gutterBottom>
         Hotels
       </Typography>
+      <Button
+        variant="contained"
+        onClick={handleAddHotel}
+        style={{ marginBottom: 20 }}
+      >
+        Add Hotel
+      </Button>
       <Grid container spacing={4}>
         {hotels.map((hotel) => (
           <Grid item xs={12} md={6} lg={4} key={hotel[0]}>
@@ -50,6 +94,12 @@ const Hotels = () => {
           </Grid>
         ))}
       </Grid>
+      <HotelModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        hotel={selectedHotel}
+        onSave={handleSaveHotel}
+      />
     </div>
   );
 };
