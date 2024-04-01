@@ -1192,7 +1192,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1202,7 +1202,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1212,7 +1212,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1222,7 +1222,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1232,7 +1232,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		1
@@ -1242,7 +1242,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1252,7 +1252,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1262,7 +1262,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1272,7 +1272,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1282,7 +1282,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		2
@@ -1292,7 +1292,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1302,7 +1302,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1312,7 +1312,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1322,7 +1322,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1332,7 +1332,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		3
@@ -1342,7 +1342,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1352,7 +1352,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1362,7 +1362,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1372,7 +1372,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1382,7 +1382,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		4
@@ -1392,7 +1392,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1402,7 +1402,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1412,7 +1412,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1422,7 +1422,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1432,7 +1432,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		5
@@ -1442,7 +1442,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1452,7 +1452,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1462,7 +1462,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1472,7 +1472,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1482,7 +1482,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		6
@@ -1492,7 +1492,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1502,7 +1502,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1512,7 +1512,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1522,7 +1522,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1532,7 +1532,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		7
@@ -1542,7 +1542,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1552,7 +1552,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1562,7 +1562,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1572,7 +1572,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1582,7 +1582,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		8
@@ -1592,7 +1592,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1602,7 +1602,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1612,7 +1612,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1622,7 +1622,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1632,7 +1632,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		9
@@ -1642,7 +1642,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1652,7 +1652,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1662,7 +1662,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1672,7 +1672,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1682,7 +1682,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		10
@@ -1692,7 +1692,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1702,7 +1702,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1712,7 +1712,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1722,7 +1722,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1732,7 +1732,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Sea View',
 		false,
 		null,
 		11
@@ -1742,7 +1742,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1752,7 +1752,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1762,7 +1762,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1772,7 +1772,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1782,7 +1782,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		12
@@ -1792,7 +1792,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1802,7 +1802,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1812,7 +1812,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1822,7 +1822,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1832,7 +1832,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		13
@@ -1842,7 +1842,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1852,7 +1852,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1862,7 +1862,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1872,7 +1872,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1882,7 +1882,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		14
@@ -1892,7 +1892,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1902,7 +1902,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1912,7 +1912,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		3,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1922,7 +1922,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		4,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1932,7 +1932,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		5,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		15
@@ -1942,7 +1942,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		1,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		16
@@ -1952,7 +1952,7 @@ INSERT INTO room VALUES
 		100.0,
 		null,
 		2,
-		'Street View',
+		'Mountain View',
 		false,
 		null,
 		16

@@ -50,9 +50,9 @@ function RoomFilters({
           value={filters.view || ""}
           onChange={handleChange}
         >
-          <MenuItem value="sea">Sea</MenuItem>
-          <MenuItem value="mountain">Mountain</MenuItem>
-          <MenuItem value="street view">Street</MenuItem>
+          <MenuItem value="Sea View">Sea</MenuItem>
+          <MenuItem value="Mountain View">Mountain</MenuItem>
+          <MenuItem value="Street View">Street</MenuItem>
         </Select>
       </FormControl>
       <FormControl style={{ minWidth: "120px", marginRight: "10px" }}>
