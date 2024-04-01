@@ -14,7 +14,7 @@ const CustomerPortal = () => {
         <Typography variant="body1">
           View the different hotels available.
         </Typography>
-        <Button variant="contained" color="primary" href="/hotels">
+        <Button variant="contained" color="primary" href="/hotelsCustomer">
           View Hotels
         </Button>
 

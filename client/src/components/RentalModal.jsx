@@ -63,10 +63,6 @@ const RentalModal = ({ open, onClose, onSave }) => {
         }),
       });
 
-      console.log("Customer Details: ");
-      console.log(customerDetails);
-      console.log(customerResponse);
-
       if (customerResponse[0] === "Email already exists") {
         // send a put request to update the customer
         const customerResponse = await fetch("http://localhost:7777/customer", {
