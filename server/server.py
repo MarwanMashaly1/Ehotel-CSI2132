@@ -4,10 +4,10 @@ import psycopg2
 
 # Database info (replace with your database details)
 DATABASE="ehotel"
-USER="postgres"
-PASSWORD="marwan2000"
-HOST="localhost"
-PORT="5432"
+USER=""
+PASSWORD=""
+HOST=""
+PORT=""
 
 def connect():
     return psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
