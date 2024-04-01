@@ -129,6 +129,14 @@ def room():
         connection.close()
         return room
     elif request.method == 'POST':
+        data = request.get_json()
+        room_number = data.get('roomNumber', None)
+        price = data.get('price', None)
+        capacity = data.get('capacity', None)
+        view = data.get('view', None)
+        extendable = data.get('extendable', None)
+        hotel_ID = data.get('hotelID', None)
+        
         if room_number and price and capacity and view and extendable and hotel_ID:
             query = f"INSERT INTO room VALUES ({room_number},{price}.0,null,{capacity},'{view}',{extendable},null,{hotel_ID})"
         else:
@@ -136,6 +144,13 @@ def room():
             connection.close()
             return 'Missing at least one of roomNumber, price, capacity, view, extendable, hotelID'
     elif request.method == 'PUT':
+        data = request.get_json()
+        room_number = data.get('roomNumber', None)
+        price = data.get('price', None)
+        capacity = data.get('capacity', None)
+        view = data.get('view', None)
+        extendable = data.get('extendable', None)
+        hotel_ID = data.get('hotelID', None)
         if room_number:
             query = "UPDATE room SET "
             if price:
@@ -152,6 +167,7 @@ def room():
             connection.close()
             return 'Missing roomNumber'
     elif request.method == 'DELETE':
+        room_number = request.args.get('roomNumber', None)
         if room_number:
             query = f"UPDATE booking SET room_number = null WHERE room_number = {room_number}; "
             query += f"DELETE FROM room WHERE room_number = {room_number};"
@@ -213,8 +229,6 @@ def customer():
         postal_code = data.get('postalCode', None) 
         register_date = data.get('registerDate', None)
 
-
-
         if email and password and identification and first_name and last_name and street_number and street_name and apt_number and city and province and postal_code and register_date:
             # check if email already exists
             query = f"SELECT * FROM customer WHERE email = '{email}'"
@@ -274,6 +288,7 @@ def customer():
             connection.close()
             return 'Missing email'
     elif request.method == 'DELETE':
+        email = request.args.get('email', None)
         if email:
             query = f"UPDATE booking SET customer_email = null WHERE customer_email = '{email}'; "
             query += f"DELETE FROM customer WHERE email = '{email}'"
@@ -358,6 +373,20 @@ def employee():
             connection.close()
             return 'Missing at least one of sin, password, firstName, lastName, streetNumber, streetName, aptNumber, city, province, postalCode, rating, empRole, hotelID'
     elif request.method == 'PUT':
+        data = request.get_json()
+        sin = data.get('sin', None)
+        password = data.get('password', None)
+        first_name = data.get('firstName', None)
+        last_name = data.get('lastName', None)
+        street_number = data.get('streetNumber', None)
+        street_name = data.get('streetName', None)
+        apt_number = data.get('aptNumber', None)
+        city = data.get('city', None)
+        province = data.get('province', None)
+        postal_code = data.get('postalCode', None)
+        rating = data.get('rating', None)
+        emp_role = data.get('empRole', None)
+        hotel_ID = data.get('hotelID', None)
         if sin:
             query = "UPDATE employee SET "
             if password:
@@ -400,6 +429,7 @@ def employee():
             connection.close()
             return 'Missing sin'
     elif request.method == 'DELETE':
+        sin = request.args.get('sin', None)
         if sin:
             query = f"DELETE FROM manages WHERE employee_sin = '{sin}'; "
             query += f"UPDATE renting SET employee_sin = null WHERE employee_sin = '{sin}'; "
@@ -478,6 +508,18 @@ def hotel():
             connection.close()
             return 'Missing at least one of hotelID, name, streetNumber, streetName, aptNumber, city, province, postalCode, rating, numRooms, hotelChainName'
     elif request.method == 'PUT':
+        data = request.get_json()
+        hotel_ID = data.get('hotelID', None)
+        name = data.get('name', None)
+        street_number = data.get('streetNumber', None)
+        street_name = data.get('streetName', None)
+        apt_number = data.get('aptNumber', None)
+        city = data.get('city', None)
+        province = data.get('province', None)
+        postal_code = data.get('postalCode', None)
+        rating = data.get('rating', None)
+        num_rooms = data.get('numRooms', None)
+        hotel_chain_name = data.get('hotelChainName', None)
         if hotel_ID:
             query = "UPDATE hotel SET "
             if name:
@@ -506,6 +548,7 @@ def hotel():
             connection.close()
             return 'Missing hotelID'
     elif request.method == 'DELETE':
+        hotel_ID = request.args.get('hotelID', None)
         if hotel_ID:
             query = f"UPDATE employee SET hotel_ID = null WHERE hotel_ID = ANY (SELECT hotel_ID FROM employee WHERE hotel_ID = {hotel_ID}); "
             query += f"UPDATE booking SET room_number = null emp_role = 'pending' WHERE room_number = ANY (SELECT room_number FROM room WHERE hotel_ID = {hotel_ID}); "

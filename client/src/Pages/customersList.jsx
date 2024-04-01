@@ -24,7 +24,7 @@ const CustomersList = () => {
     if (window.confirm("Are you sure you want to delete this customer?")) {
       try {
         const response = await fetch(
-          `http://localhost:7777/customer?email=${encodeURIComponent(email)}`,
+          `http://localhost:7777/customer?email=${email}`,
           {
             method: "DELETE",
           }
@@ -58,7 +58,7 @@ const CustomersList = () => {
             <Card variant="outlined" onClick={() => handleOpenModal(customer)}>
               <CardContent>
                 <Typography variant="h5">
-                  {customer[2]} {customer[3]}
+                  {customer[3]} {customer[4]}
                 </Typography>
                 <Typography color="text.secondary">{customer[0]}</Typography>
                 {/* customer address */}
@@ -77,7 +77,7 @@ const CustomersList = () => {
                 <IconButton
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleDeleteCustomer(customer.email);
+                    handleDeleteCustomer(customer[0]);
                   }}
                 >
                   <DeleteIcon />

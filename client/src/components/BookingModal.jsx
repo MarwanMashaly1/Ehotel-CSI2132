@@ -59,28 +59,28 @@ function BookingModal({ isOpen, onClose, room }) {
     let method = "POST";
     try {
       // Attempt to create or update customer
-      let customerResponse = await fetch(
-        `http://localhost:7777/customer?email=${encodeURIComponent(
-          customerDetails.email
-        )}`,
-        {
-          method: "GET", // Check if customer exists
-        }
-      );
-
-      if (customerResponse.ok) {
-        method = "PUT"; // Customer exists, so we'll need to update
-      }
 
       // Create or update customer
-      customerResponse = await fetch("http://localhost:7777/customer", {
+      let customerResponse = await fetch("http://localhost:7777/customer", {
         method: method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(customerDetails),
       });
 
-      if (!customerResponse.ok)
-        throw new Error("Failed to create/update customer");
+      if (customerResponse[0] === "Email already exists") {
+        // send a put request to update the customer
+        const customerResponse = await fetch("http://localhost:7777/customer", {
+          method: "PUT", // Adjust method as necessary
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...customerDetails,
+          }),
+        });
+
+        console.log("Customer Details: ");
+        console.log(customerDetails);
+        console.log(customerResponse);
+      }
 
       // Create booking
       const bookingResponse = await fetch("http://localhost:7777/booking", {

@@ -10,6 +10,7 @@ import Bookings from "./Pages/Bookings";
 import Rentals from "./Pages/Rentals";
 import CreateRoom from "./Pages/CreateRoom";
 import HotelData from "./Pages/HotelData";
+import HotelsCustomer from "./Pages/HotelsCustomer";
 // import Employees from "./Pages/Employees";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import react router
@@ -30,6 +31,7 @@ function App() {
           <Route path="/rentings" element={<Rentals />} />
           <Route path="/createRoom" element={<CreateRoom />} />
           <Route path="/hotelData" element={<HotelData />} />
+          <Route path="/hotelsCustomer" element={<HotelsCustomer />} />
         </Routes>
       </BrowserRouter>
     </div>

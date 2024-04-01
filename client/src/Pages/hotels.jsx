@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardContent, Typography, Grid, Button } from "@mui/material";
 import HotelModal from "../components/hotelModal"; // Import the modal component
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
@@ -29,11 +32,27 @@ const Hotels = () => {
     setModalOpen(true);
   };
 
+  const handleDeleteHotel = async (hotelId) => {
+    if (!window.confirm("Are you sure you want to delete this hotel?")) {
+      return;
+    }
+
+    try {
+      await fetch(`http://localhost:7777/hotel?hotelID=${hotelId}`, {
+        method: "DELETE",
+      });
+      // After deletion, fetch the hotels list again to reflect changes
+      fetchHotels();
+    } catch (error) {
+      console.error("Failed to delete hotel:", error);
+    }
+  };
+
   // Function to save hotel details (add or edit)
   const handleSaveHotel = async (hotelDetails) => {
     const method = selectedHotel ? "PUT" : "POST";
     const url = `http://localhost:7777/hotel${
-      selectedHotel ? `?hotelID=${selectedHotel.hotel_ID}` : ""
+      selectedHotel ? `?hotelID=${selectedHotel[0]}` : ""
     }`;
 
     try {
@@ -89,6 +108,12 @@ const Hotels = () => {
                   <br />
                   Contact Phone: {hotel[14]}
                 </Typography>
+                <IconButton onClick={() => handleEditHotel(hotel)}>
+                  <EditIcon />
+                </IconButton>
+                <IconButton onClick={() => handleDeleteHotel(hotel[0])}>
+                  <DeleteIcon />
+                </IconButton>
               </CardContent>
             </Card>
           </Grid>
