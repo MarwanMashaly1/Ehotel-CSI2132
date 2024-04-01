@@ -586,7 +586,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'J8Y6X4',
 		5,
-		349,
+		0,
 		6,
 		6,
 		'Hilton Hotels & Resorts'
@@ -601,7 +601,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'K1R 0C7',
 		4,
-		175,
+		0,
 		7,
 		7,
 		'Hilton Hotels & Resorts'
@@ -616,7 +616,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H3A0B1',
 		3,
-		221,
+		0,
 		8,
 		8,
 		'Hilton Hotels & Resorts'
@@ -631,7 +631,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H5B1E5',
 		4,
-		595,
+		0,
 		9,
 		9,
 		'Hilton Hotels & Resorts'
@@ -646,7 +646,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'L6G1A5',
 		4,
-		502,
+		0,
 		10,
 		10,
 		'Hilton Hotels & Resorts'
@@ -661,7 +661,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'M5G1R3',
 		4,
-		490,
+		0,
 		11,
 		11,
 		'Hilton Hotels & Resorts'
@@ -676,7 +676,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'L2G3V9',
 		2,
-		1083,
+		0,
 		12,
 		12,
 		'Hilton Hotels & Resorts'
@@ -691,7 +691,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'J8E1E1',
 		4,
-		101,
+		0,
 		13,
 		13,
 		'Hilton Hotels & Resorts'
@@ -708,7 +708,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'K1J7T4',
 		3,
-		256,
+		0,
 		14,
 		14,
 		'Holiday Inn'
@@ -723,7 +723,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'K1R5A7',
 		4,
-		177,
+		0,
 		15,
 		15,
 		'Holiday Inn'
@@ -738,7 +738,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H2Z0B4',
 		3,
-		221,
+		0,
 		16,
 		16,
 		'Holiday Inn'
@@ -753,7 +753,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H8T1A6',
 		3,
-		154,
+		0,
 		17,
 		17,
 		'Holiday Inn'
@@ -768,7 +768,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'M5B2E9',
 		3,
-		513,
+		0,
 		18,
 		18,
 		'Holiday Inn'
@@ -783,7 +783,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'M5C2T9',
 		3,
-		195,
+		0,
 		19,
 		19,
 		'Holiday Inn'
@@ -798,7 +798,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'L2G2J3',
 		3,
-		122,
+		0,
 		20,
 		20,
 		'Holiday Inn'
@@ -813,7 +813,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'J8E1C9',
 		4,
-		141,
+		0,
 		21,
 		21,
 		'Holiday Inn'
@@ -830,7 +830,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'K1P5G2',
 		4,
-		236,
+		0,
 		22,
 		22,
 		'Sheraton Hotels and Resorts'
@@ -845,7 +845,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H9P1B7',
 		3,
-		465,
+		0,
 		23,
 		23,
 		'Sheraton Hotels and Resorts'
@@ -860,7 +860,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H7T1X5',
 		4,
-		238,
+		0,
 		24,
 		24,
 		'Sheraton Hotels and Resorts'
@@ -875,7 +875,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'M5H2M9',
 		5,
-		1472,
+		0,
 		25,
 		25,
 		'Sheraton Hotels and Resorts'
@@ -890,7 +890,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'M9W1J5',
 		4,
-		249,
+		0,
 		26,
 		26,
 		'Sheraton Hotels and Resorts'
@@ -905,7 +905,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'L4B1B2',
 		4,
-		311,
+		0,
 		27,
 		27,
 		'Sheraton Hotels and Resorts'
@@ -920,7 +920,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'L2G3K7',
 		3,
-		669,
+		0,
 		28,
 		28,
 		'Sheraton Hotels and Resorts'
@@ -935,7 +935,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'L2V4Y6',
 		4,
-		124,
+		0,
 		29,
 		29,
 		'Sheraton Hotels and Resorts'
@@ -952,7 +952,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'K1P5R7',
 		4,
-		489,
+		0,
 		30,
 		30,
 		'Marriott Hotels & Resorts'
@@ -967,7 +967,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'K1K4S3',
 		4,
-		393,
+		0,
 		31,
 		31,
 		'Marriott Hotels & Resorts'
@@ -982,7 +982,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'K1R5T9',
 		5,
-		410,
+		0,
 		32,
 		32,
 		'Marriott Hotels & Resorts'
@@ -997,7 +997,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H3B4C9',
 		4,
-		596,
+		0,
 		33,
 		33,
 		'Marriott Hotels & Resorts'
@@ -1012,7 +1012,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H2Z0A6',
 		3,
-		210,
+		0,
 		34,
 		34,
 		'Marriott Hotels & Resorts'
@@ -1027,7 +1027,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'H2L4C6',
 		4,
-		154,
+		0,
 		35,
 		35,
 		'Marriott Hotels & Resorts'
@@ -1042,7 +1042,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'M5G2L2',
 		3,
-		461,
+		0,
 		36,
 		36,
 		'Marriott Hotels & Resorts'
@@ -1057,7 +1057,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'M5V1J4',
 		4,
-		344,
+		0,
 		37,
 		37,
 		'Marriott Hotels & Resorts'
@@ -1074,7 +1074,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'K2E0B7',
 		5,
-		201,
+		0,
 		38,
 		38,
 		'Sandman Hotel Group'
@@ -1089,7 +1089,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'J4K2T1',
 		2,
-		214,
+		0,
 		39,
 		39,
 		'Sandman Hotel Group'
@@ -1104,7 +1104,7 @@ INSERT INTO hotel VALUES
 		'Ontario',
 		'M9W 7K7',
 		5,
-		256,
+		0,
 		40,
 		40,
 		'Sandman Hotel Group'
@@ -1119,7 +1119,7 @@ INSERT INTO hotel VALUES
 		'Quebec',
 		'L8E0G2',
 		1,
-		208,
+		0,
 		41,
 		41,
 		'Sandman Hotel Group'
@@ -1134,7 +1134,7 @@ INSERT INTO hotel VALUES
 		'British Columbia',
 		'V6B4P4',
 		2,
-		302,
+		0,
 		42,
 		42,
 		'Sandman Hotel Group'
@@ -1149,7 +1149,7 @@ INSERT INTO hotel VALUES
 		'British Columbia',
 		'V6X3K4',
 		4,
-		171,
+		0,
 		43,
 		43,
 		'Sandman Hotel Group'
@@ -1164,7 +1164,7 @@ INSERT INTO hotel VALUES
 		'British Columbia',
 		'V8T4M5',
 		4,
-		100,
+		0,
 		44,
 		4,
 		'Sandman Hotel Group'
@@ -1179,7 +1179,7 @@ INSERT INTO hotel VALUES
 		'Alberta',
 		'T2P3J3',
 		3,
-		300,
+		0,
 		45,
 		45,
 		'Sandman Hotel Group'
